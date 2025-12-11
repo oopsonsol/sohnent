@@ -35,7 +35,7 @@ export default function Home() {
       <section className="min-h-screen flex flex-col items-center text-center p-4">
         <div className="flex-grow flex flex-col items-center justify-end pb-60">
             <FadeIn className="flex flex-col items-center">
-              <h1 className="text-7xl font-light tracking-[0.21em] uppercase">
+              <h1 className="text-7xl font-light tracking-[0.20em] uppercase">
                 Sohn Enterprises
               </h1>
               <p className="mt-8 text-base tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
