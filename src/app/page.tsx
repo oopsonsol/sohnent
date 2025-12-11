@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="min-h-screen flex flex-col items-center justify-center text-center p-4 pb-20">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <FadeIn className="flex flex-col items-center">
           <h1 className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase">
             Sohn Enterprises
@@ -51,7 +51,7 @@ export default function Home() {
           >
             ENTER
           </Button>
-          <div className="flex justify-center mt-20">
+          <div className="flex justify-center mt-20 -mb-16">
             <div className="h-16 w-px bg-foreground/20" />
           </div>
         </FadeIn>
