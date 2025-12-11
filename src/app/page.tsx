@@ -35,10 +35,10 @@ export default function Home() {
       <section className="min-h-screen flex flex-col items-center text-center p-4">
         <div className="flex-grow flex flex-col items-center justify-center pb-32">
             <FadeIn className="flex flex-col items-center">
-              <h1 className="text-4xl md:text-6xl font-light tracking-[0.4em] uppercase">
+              <h1 className="text-6xl font-light tracking-[0.4em] uppercase">
                 Sohn Enterprises
               </h1>
-              <p className="mt-8 text-sm md:text-base tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
+              <p className="mt-8 text-base tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
                 Private Capital • Strategic Deployment • Global Reach
               </p>
               <p className="mt-4 text-xs tracking-[0.25em] text-foreground/50 uppercase font-light">
