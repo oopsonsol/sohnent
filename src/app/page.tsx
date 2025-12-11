@@ -54,7 +54,7 @@ export default function Home() {
               </Button>
             </FadeIn>
         </div>
-        <div className="flex justify-center -mt-16">
+        <div className="flex justify-center -mt-40">
           <div className="h-16 w-px bg-foreground/20" />
         </div>
       </section>
