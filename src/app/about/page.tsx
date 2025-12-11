@@ -17,7 +17,7 @@ export default function AboutPage() {
       <FadeIn>
         <section className="py-24 md:py-40">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl md:text-4xl font-light leading-snug tracking-wide">
                 Sohn Enterprises is a privately held U.S. investment syndicate with strategic operations in LATAM.
               </h1>
