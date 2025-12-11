@@ -47,10 +47,12 @@ export default function Home() {
               <Button
                 variant="link"
                 size="lg"
-                className="mt-16 tracking-[0.3em] font-normal text-xs underline underline-offset-8 hover:text-accent transition-colors duration-500"
+                className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 no-underline"
                 onClick={handleEnterClick}
               >
-                ENTER
+                <div className="border-b border-current pb-2 px-px">
+                  ENTER
+                </div>
               </Button>
             </FadeIn>
         </div>
