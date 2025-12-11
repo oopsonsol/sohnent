@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <div className="dark">
+    <>
       <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <FadeIn>
           <h1 className="text-5xl md:text-6xl font-normal tracking-[0.3em] uppercase">
@@ -74,6 +74,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 }
