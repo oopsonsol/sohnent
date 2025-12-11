@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="dark">
       <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <FadeIn>
           <h1 className="text-5xl md:text-6xl font-normal tracking-[0.3em] uppercase">
@@ -59,7 +59,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center space-y-24 max-w-4xl mx-auto">
               {sections.map((section, index) => (
-                <FadeIn key={index}>
+                <FadeIn key={index} delay={index * 150}>
                   <div className="text-center">
                     <h2 className="text-lg font-normal tracking-[0.3em] uppercase text-accent">
                       {section.title}
