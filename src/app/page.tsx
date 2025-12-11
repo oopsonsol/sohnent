@@ -47,7 +47,7 @@ export default function Home() {
               <Button
                 variant="link"
                 size="lg"
-                className="mt-16 group text-foreground/80 tracking-[0.3em] font-normal text-xs"
+                className="mt-16 tracking-[0.3em] font-normal text-xs underline hover:text-accent"
                 onClick={handleEnterClick}
               >
                 ENTER
