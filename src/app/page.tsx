@@ -32,29 +32,31 @@ export default function Home() {
 
   return (
     <>
-      <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <FadeIn className="flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase">
-            Sohn Enterprises
-          </h1>
-          <p className="mt-8 text-sm md:text-base tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
-            Private Capital • Strategic Deployment • Global Reach
-          </p>
-          <p className="mt-4 text-xs tracking-[0.25em] text-foreground/50 uppercase font-light">
-            United States • LATAM Markets
-          </p>
-          <Button
-            variant="link"
-            size="lg"
-            className="mt-16 group text-foreground/80 tracking-[0.3em] font-normal text-xs"
-            onClick={handleEnterClick}
-          >
-            ENTER
-          </Button>
-          <div className="flex justify-center mt-20 -mb-16">
-            <div className="h-16 w-px bg-foreground/20" />
-          </div>
-        </FadeIn>
+      <section className="min-h-screen flex flex-col items-center text-center p-4">
+        <div className="flex-grow flex flex-col items-center justify-center pb-32">
+            <FadeIn className="flex flex-col items-center">
+              <h1 className="text-4xl md:text-6xl font-light tracking-[0.4em] uppercase">
+                Sohn Enterprises
+              </h1>
+              <p className="mt-8 text-sm md:text-base tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
+                Private Capital • Strategic Deployment • Global Reach
+              </p>
+              <p className="mt-4 text-xs tracking-[0.25em] text-foreground/50 uppercase font-light">
+                United States • LATAM Markets
+              </p>
+              <Button
+                variant="link"
+                size="lg"
+                className="mt-16 group text-foreground/80 tracking-[0.3em] font-normal text-xs"
+                onClick={handleEnterClick}
+              >
+                ENTER
+              </Button>
+            </FadeIn>
+        </div>
+        <div className="flex justify-center -mt-16">
+          <div className="h-16 w-px bg-foreground/20" />
+        </div>
       </section>
 
       <div ref={contentRef} className="scroll-mt-16">
