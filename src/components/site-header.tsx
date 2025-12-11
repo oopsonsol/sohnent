@@ -13,9 +13,9 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="py-6 border-b border-border/50">
+    <header className="py-6">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-semibold tracking-tight hover:text-accent transition-colors">
+        <Link href="/" className="text-lg font-normal tracking-[0.2em] uppercase hover:text-foreground/70 transition-colors">
           Sohn Enterprises
         </Link>
         <nav className="flex items-center space-x-8">
@@ -24,8 +24,8 @@ export function SiteHeader() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-base hover:text-accent transition-colors",
-                pathname === link.href ? "text-accent font-medium" : "text-foreground/80"
+                "text-sm tracking-widest uppercase hover:text-foreground/70 transition-colors",
+                pathname === link.href ? "text-foreground font-medium" : "text-foreground/60"
               )}
             >
               {link.label}

@@ -12,14 +12,14 @@ export default function ContactPage() {
         <section className="py-24 md:py-32">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-normal tracking-widest uppercase">
                 Contact
               </h1>
-              <p className="mt-4 text-lg text-foreground/70">
+              <p className="mt-4 text-base text-foreground/60">
                 Inquiries are directed to our U.S. operations team for review.
               </p>
             </div>
-            <div className="max-w-2xl mx-auto mt-12">
+            <div className="max-w-xl mx-auto mt-12">
               <ContactForm />
             </div>
           </div>

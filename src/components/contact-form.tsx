@@ -47,6 +47,7 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setStatus("submitting");
     try {
+      // NOTE: Replace with your own form endpoint
       const response = await fetch("https://formspree.io/f/YOUR_FORM_ID_HERE", {
         method: "POST",
         headers: {
@@ -73,15 +74,15 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel className="font-normal tracking-widest uppercase text-xs text-foreground/60">Name</FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,9 +93,9 @@ export function ContactForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="font-normal tracking-widest uppercase text-xs text-foreground/60">Email</FormLabel>
               <FormControl>
-                <Input placeholder="john.doe@example.com" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -105,10 +106,9 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="font-normal tracking-widest uppercase text-xs text-foreground/60">Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Your inquiry..."
                   className="min-h-[120px]"
                   {...field}
                 />
@@ -117,12 +117,12 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center pt-6 gap-6">
             {status === 'success' ? (
-                <p className="text-center text-green-400">Thank you for your message. We will respond if the inquiry is qualified.</p>
+                <p className="text-center text-green-600">Thank you for your message. We will respond if the inquiry is qualified.</p>
             ) : (
                 <>
-                    <Button type="submit" disabled={status === "submitting"} className="w-full md:w-auto px-12">
+                    <Button type="submit" variant="outline" size="lg" disabled={status === "submitting"} className="w-full md:w-auto px-16 tracking-widest uppercase text-xs">
                         {status === "submitting" ? "Submitting..." : "Submit Inquiry"}
                     </Button>
                     <p className="text-xs text-center text-foreground/50 max-w-sm">

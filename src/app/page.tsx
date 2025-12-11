@@ -35,23 +35,22 @@ export default function Home() {
     <div>
       <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <FadeIn>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
+          <h1 className="text-5xl md:text-6xl font-normal tracking-[0.2em] uppercase">
             Sohn Enterprises
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">
-            Private Capital. Strategic Deployment. Global Reach.
+          <p className="mt-6 text-sm md:text-base tracking-[0.2em] text-foreground/80 max-w-4xl mx-auto uppercase">
+            Private Capital • Strategic Deployment • Global Reach
           </p>
-          <p className="mt-2 text-base md:text-lg text-foreground/60">
+          <p className="mt-3 text-xs md:text-sm tracking-[0.2em] text-foreground/60 uppercase">
             United States • LATAM Markets
           </p>
           <Button
-            variant="ghost"
+            variant="link"
             size="lg"
-            className="mt-12 group text-accent hover:text-accent"
+            className="mt-20 group text-foreground/80 tracking-[0.2em] font-normal text-sm"
             onClick={handleEnterClick}
           >
-            Enter
-            <ArrowDown className="w-4 h-4 ml-2 transition-transform group-hover:translate-y-1" />
+            ENTER
           </Button>
         </FadeIn>
       </section>
@@ -63,7 +62,7 @@ export default function Home() {
               {sections.map((section, index) => (
                 <FadeIn key={index}>
                   <div >
-                    <h2 className="text-3xl font-semibold tracking-tight text-accent">
+                    <h2 className="text-3xl font-semibold tracking-tight text-foreground">
                       {section.title}
                     </h2>
                     <p className="mt-4 text-lg text-foreground/80">
