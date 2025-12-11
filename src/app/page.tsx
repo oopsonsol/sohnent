@@ -47,7 +47,7 @@ export default function Home() {
               <Button
                 variant="link"
                 size="lg"
-                className="mt-16 tracking-[0.3em] font-normal text-xs underline hover:text-accent transition-colors duration-500"
+                className="mt-16 tracking-[0.3em] font-normal text-xs underline underline-offset-2 hover:text-accent transition-colors duration-500"
                 onClick={handleEnterClick}
               >
                 ENTER
