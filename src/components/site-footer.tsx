@@ -14,16 +14,11 @@ export function SiteFooter() {
   return (
     <footer className="py-8">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center h-8 w-8 rounded-full bg-foreground text-background">
-                <span className="text-sm font-bold">N</span>
-            </div>
-            <p className="text-xs text-foreground/50 tracking-widest uppercase">
-              © {year} Sohn Enterprises
-            </p>
+        <div className="flex flex-col text-xs text-foreground/50 tracking-widest uppercase">
+          <span>© {year} Sohn Enterprises</span>
+          <span>United States</span>
         </div>
         <div className="flex items-center gap-6 text-xs text-foreground/50 tracking-widest uppercase">
-          <span>United States</span>
           <Link href="/contact" className="hover:text-foreground transition-colors">
             Contact
           </Link>
