@@ -51,6 +51,7 @@ export default function Home() {
           >
             ENTER
           </Button>
+          <div className="mt-20 h-16 w-px bg-foreground/20" />
         </FadeIn>
       </section>
 
