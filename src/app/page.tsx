@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <FadeIn>
+        <FadeIn className="flex flex-col items-center">
           <h1 className="text-5xl md:text-6xl font-normal tracking-[0.3em] uppercase">
             Sohn Enterprises
           </h1>
