@@ -2,13 +2,12 @@
 
 import React, { useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
 import { FadeIn } from '@/components/fade-in';
 
 const sections = [
   {
     title: 'Capital Deployment',
-    description: 'Selective, disciplined capital allocation across diversified sectors.',
+    description: 'Targeted capital deployment across real estate, structured development, and strategic land positions.',
   },
   {
     title: 'Asset Acquisition',
@@ -35,7 +34,7 @@ export default function Home() {
     <div>
       <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <FadeIn>
-          <h1 className="text-5xl md:text-6xl font-normal tracking-[0.2em] uppercase">
+          <h1 className="text-5xl md:text-6xl font-normal tracking-[0.3em] uppercase">
             Sohn Enterprises
           </h1>
           <p className="mt-6 text-sm md:text-base tracking-[0.2em] text-foreground/80 max-w-4xl mx-auto uppercase">
@@ -47,7 +46,7 @@ export default function Home() {
           <Button
             variant="link"
             size="lg"
-            className="mt-20 group text-foreground/80 tracking-[0.2em] font-normal text-sm"
+            className="mt-20 group text-foreground/80 tracking-[0.3em] font-normal text-sm"
             onClick={handleEnterClick}
           >
             ENTER
@@ -58,14 +57,14 @@ export default function Home() {
       <div ref={contentRef} className="scroll-mt-16">
         <section className="py-24 md:py-32">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 max-w-6xl mx-auto">
+            <div className="flex flex-col items-center space-y-24 max-w-4xl mx-auto">
               {sections.map((section, index) => (
                 <FadeIn key={index}>
-                  <div >
-                    <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+                  <div className="text-center">
+                    <h2 className="text-lg font-normal tracking-[0.3em] uppercase text-accent">
                       {section.title}
                     </h2>
-                    <p className="mt-4 text-lg text-foreground/80">
+                    <p className="mt-4 text-2xl text-foreground max-w-2xl mx-auto">
                       {section.description}
                     </p>
                   </div>
