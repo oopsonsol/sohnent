@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useVisibility } from "@/hooks/use-visibility.tsx";
+import { useVisibility } from "@/hooks/use-visibility";
 import { FadeIn } from "./fade-in";
 
 const navLinks = [

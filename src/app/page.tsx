@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
-import { useVisibility } from '@/hooks/use-visibility.tsx';
+import { useVisibility } from '@/hooks/use-visibility';
 
 const sections = [
   {
