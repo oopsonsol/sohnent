@@ -18,7 +18,7 @@ export default function InvestorsPage() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setError("Invalid access credentials. Please contact your Sohn Enterprises representative.");
+    setError("Invalid access credentials.");
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,8 +39,6 @@ export default function InvestorsPage() {
                 INVESTOR PORTAL
               </h1>
               <p className="mt-4 text-base text-foreground/60">
-                Access restricted to qualified parties.
-                <br />
                 {showForm ? "Please provide your access credentials." : "Please sign in to continue."}
               </p>
               
