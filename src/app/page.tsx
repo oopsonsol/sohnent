@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
 
@@ -27,6 +26,10 @@ const sections = [
 export default function Home() {
   const contentRef = React.useRef<HTMLDivElement>(null);
 
+  const handleScroll = () => {
+    contentRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <section className="min-h-screen flex flex-col items-center text-center p-4">
@@ -41,15 +44,14 @@ export default function Home() {
               <p className="mt-4 text-xs tracking-[0.25em] text-foreground/50 uppercase font-light">
                 United States • LATAM Markets
               </p>
-              <Link href="/about" passHref>
-                <Button
-                  variant="link"
-                  size="lg"
-                  className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
-                >
-                  ENTER
-                </Button>
-              </Link>
+              <Button
+                variant="link"
+                size="lg"
+                className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
+                onClick={handleScroll}
+              >
+                ENTER
+              </Button>
             </FadeIn>
         </div>
         <div className="flex justify-center relative">
