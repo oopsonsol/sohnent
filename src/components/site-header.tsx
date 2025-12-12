@@ -11,12 +11,24 @@ const navLinks = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
-    <header className="py-6 fixed top-0 left-0 right-0 z-50">
+    <header
+      className={cn(
+        "py-6 fixed top-0 left-0 right-0 z-50",
+        isHome && "bg-background/20 backdrop-blur-sm"
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center max-w-[1100px] mx-auto">
-          <Link href="/" className="text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-90 origin-left">
+          <Link
+            href="/"
+            className={cn(
+              "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-90 origin-left",
+              isHome && "invisible"
+            )}
+          >
             Sohn Enterprises
           </Link>
           <nav className="flex items-center space-x-8 ml-16">
