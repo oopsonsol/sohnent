@@ -8,10 +8,13 @@ export function FadeIn({ children, className, delay = 0 }: PropsWithChildren<{ c
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        setTimeout(() => setVisible(true), delay);
-        observer.unobserve(domRef.current!);
-      }
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), delay);
+        } else {
+          setVisible(false);
+        }
+      });
     });
 
     const { current } = domRef;
