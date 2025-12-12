@@ -33,9 +33,9 @@ export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) {
-            setHasEntered(true);
-        }
+        // Set hasEntered to true when the button is NOT intersecting (i.e., off-screen)
+        // and false when it IS intersecting (i.e., on-screen).
+        setHasEntered(!entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
