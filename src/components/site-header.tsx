@@ -17,7 +17,7 @@ export function SiteHeader() {
     <header
       className={cn(
         "py-6 fixed top-0 left-0 right-0 z-50",
-        isHome && "bg-background/90 backdrop-blur-sm"
+        isHome && "bg-background/[.94] backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4">
