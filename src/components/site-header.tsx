@@ -36,7 +36,7 @@ export function SiteHeader() {
             href="/"
             className={cn(
               "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80] origin-left",
-              (isHome || !isNavVisible) && "hidden md:inline-block"
+              "hidden md:inline-block"
             )}
           >
             Sohn Enterprises
