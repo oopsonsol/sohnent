@@ -30,7 +30,7 @@ export function FadeIn({ children, className, delay = 0 }: PropsWithChildren<{ c
     <div
       ref={domRef}
       className={cn(
-        'transition-all duration-[1500ms] ease-out',
+        'transition-all duration-1000 ease-out',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4',
         className
       )}

@@ -33,7 +33,7 @@ export default function Home() {
     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 2000; // 2 seconds for a slow, cinematic feel
+    const duration = 1200; // Adjusted for a slightly faster scroll
     let startTime: number | null = null;
 
     const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
