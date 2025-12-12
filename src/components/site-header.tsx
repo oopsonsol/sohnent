@@ -15,29 +15,16 @@ export function SiteHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const { hasEntered } = useVisibility();
-
-  const showNavTrigger = !isHome || hasEntered;
-  const [isNavVisible, setIsNavVisible] = useState(false);
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-
-    if (showNavTrigger) {
-      timeoutId = setTimeout(() => {
-        setIsNavVisible(true);
-      }, 7000);
-    } else {
-      setIsNavVisible(false);
-    }
-
-    return () => clearTimeout(timeoutId);
-  }, [showNavTrigger]);
+  
+  const isNavVisible = !isHome || hasEntered;
 
   const headerClasses = cn(
-    "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+    "py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
+    isHome ? "duration-500 delay-[7000ms]" : "duration-300",
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
-      "bg-background/[.94] backdrop-blur-sm opacity-100 translate-y-0": isNavVisible,
+      "opacity-100 translate-y-0": isNavVisible,
+      "bg-background/[.94] backdrop-blur-sm": isHome ? isNavVisible : true,
     }
   );
 
