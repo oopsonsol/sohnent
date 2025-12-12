@@ -65,7 +65,7 @@ export default function Home() {
     <>
       <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4">
-        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-40">
+        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-44">
             <FadeIn className="flex flex-col items-center">
               <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
                 Sohn<br className="md:hidden" /> Enterprises
@@ -77,7 +77,7 @@ export default function Home() {
                 United States • LATAM Markets
               </p>
               <Button
-                ref={enterButtonRef as React.RefObject<HTMLButtonElement>}
+                ref={enterButtonRef}
                 variant="link"
                 size="lg"
                 className="mt-16 tracking-[0.3em] font-normal text-xs md:text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
