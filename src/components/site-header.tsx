@@ -20,7 +20,7 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+        "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out delay-600",
         isHome && showNav && "bg-background/[.94] backdrop-blur-sm opacity-100 translate-y-0",
         isHome && !showNav && "opacity-0 -translate-y-4 pointer-events-none"
       )}
