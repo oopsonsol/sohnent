@@ -25,7 +25,7 @@ export default function AboutPage() {
                 {points.map((point, index) => (
                     <li key={index} className="flex items-center w-full max-w-md">
                         <div className="w-px h-6 bg-accent mr-6"></div>
-                        <span className="text-[17px] text-foreground/70 tracking-wider">{point}</span>
+                        <span className="text-lg text-foreground/70 tracking-wider">{point}</span>
                     </li>
                 ))}
               </ul>
