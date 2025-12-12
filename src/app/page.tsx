@@ -37,7 +37,10 @@ export default function Home() {
         // and true when it is NOT intersecting (i.e., off-screen).
         setHasEntered(!entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0,
+        rootMargin: '-100px 0px 0px 0px' 
+      }
     );
 
     const currentButton = enterButtonRef.current;
@@ -94,7 +97,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col space-y-32 max-w-4xl mx-auto">
               {sections.map((section, index) => (
-                <FadeIn key={index} delay={index * 200} duration={3000}>
+                <FadeIn key={index} delay={index * 200} duration={3600}>
                   <div className="text-left">
                     <h2 className="text-xs font-light tracking-[0.3em] uppercase text-accent mb-6">
                       {section.title}
