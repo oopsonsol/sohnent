@@ -27,7 +27,7 @@ const sections = [
 
 export default function Home() {
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const enterButtonRef = React.useRef<HTMLButtonElement>(null);
+  const enterButtonRef = React.useRef<HTMLElement>(null);
   const { setHasEntered } = useVisibility();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function Home() {
     <>
       <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4">
-        <div className="flex-grow flex flex-col items-center justify-end pb-40">
+        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-32">
             <FadeIn className="flex flex-col items-center">
               <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
                 Sohn<br className="md:hidden" /> Enterprises
@@ -77,10 +77,10 @@ export default function Home() {
                 United States • LATAM Markets
               </p>
               <Button
-                ref={enterButtonRef}
+                ref={enterButtonRef as React.RefObject<HTMLButtonElement>}
                 variant="link"
                 size="lg"
-                className="mt-16 tracking-[0.3em] font-normal text-[0.8rem] md:text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
+                className="mt-16 tracking-[0.3em] font-normal text-xs md:text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
                 onClick={handleScroll}
               >
                 OVERVIEW
