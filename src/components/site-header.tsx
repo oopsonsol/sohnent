@@ -17,15 +17,23 @@ export function SiteHeader() {
 
   const showNav = !isHome || hasEntered;
 
+  // Base classes with transition and the requested delay
+  const baseHeaderClasses = "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out delay-[7000ms]";
+  
+  // Classes for the "hidden" state on the homepage
+  const hiddenStateClasses = "opacity-0 -translate-y-4 pointer-events-none";
+
+  // Classes for the "visible" state on the homepage
+  const visibleStateClasses = "bg-background/[.94] backdrop-blur-sm opacity-100 translate-y-0";
+
+  // Determine the final class string
+  const headerClassName = isHome
+    ? `${baseHeaderClasses} ${showNav ? visibleStateClasses : hiddenStateClasses}`
+    : baseHeaderClasses;
+
+
   return (
-    <header
-      className={cn(
-        "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out delay-[3600ms]",
-        isHome && "bg-background/[.94] backdrop-blur-sm",
-        isHome && showNav && "opacity-100 translate-y-0",
-        isHome && !showNav && "opacity-0 -translate-y-4 pointer-events-none"
-      )}
-    >
+    <header className={headerClassName}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center max-w-[1100px] mx-auto">
           <Link
