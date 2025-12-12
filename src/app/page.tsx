@@ -80,7 +80,7 @@ export default function Home() {
                 ref={enterButtonRef}
                 variant="link"
                 size="lg"
-                className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
+                className="mt-16 tracking-[0.3em] font-normal text-[0.8rem] md:text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
                 onClick={handleScroll}
               >
                 OVERVIEW
