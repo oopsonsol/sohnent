@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function SiteFooter() {
   const [year, setYear] = useState(new Date().getFullYear());
+  const pathname = usePathname();
 
   useEffect(() => {
-    // This hook ensures `new Date()` is only called on the client,
-    // preventing hydration mismatches.
     setYear(new Date().getFullYear());
   }, []);
 
@@ -19,8 +20,16 @@ export function SiteFooter() {
             <span>© {year} Sohn Enterprises</span>
             <span className="scale-[.85] origin-left">LIMITED LIABILITY COMPANY</span>
           </div>
-          <div className="flex items-center gap-6 text-xs text-foreground/50 tracking-widest uppercase">
-            <Link href="/contact" className="hover:text-foreground transition-colors">
+          <div className="flex items-center gap-6 text-xs tracking-widest uppercase">
+            <Link
+              href="/contact"
+              className={cn(
+                "transition-colors",
+                pathname === "/contact"
+                  ? "text-accent"
+                  : "text-foreground/50 hover:text-accent"
+              )}
+            >
               Contact
             </Link>
           </div>
