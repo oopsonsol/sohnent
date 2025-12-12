@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
-import { useVisibility } from '@/hooks/use-visibility';
 
 const sections = [
   {
@@ -26,28 +25,6 @@ const sections = [
 
 export default function Home() {
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const enterButtonRef = React.useRef<HTMLButtonElement>(null);
-  const { setEnterButtonVisible } = useVisibility();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setEnterButtonVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentButtonRef = enterButtonRef.current;
-    if (currentButtonRef) {
-      observer.observe(currentButtonRef);
-    }
-
-    return () => {
-      if (currentButtonRef) {
-        observer.unobserve(currentButtonRef);
-      }
-    };
-  }, [setEnterButtonVisible]);
 
   const handleScroll = () => {
     if (!contentRef.current) return;
@@ -71,7 +48,6 @@ export default function Home() {
                 United States • LATAM Markets
               </p>
               <Button
-                ref={enterButtonRef}
                 variant="link"
                 size="lg"
                 className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useVisibility } from "@/hooks/use-visibility";
 
 const navLinks = [
   { href: "/about", label: "OVERVIEW" },
@@ -12,10 +11,6 @@ const navLinks = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const { isEnterButtonVisible } = useVisibility();
-  const isHome = pathname === "/";
-
-  const showNav = !isHome || !isEnterButtonVisible;
 
   return (
     <header className="py-6 fixed top-0 left-0 right-0 z-50">
@@ -25,10 +20,7 @@ export function SiteHeader() {
             Sohn Enterprises
           </Link>
           <nav className="flex items-center space-x-8 ml-16">
-            <div className={cn(
-              "flex items-center space-x-8 transition-all duration-500 ease-in-out",
-              showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-            )}>
+            <div className="flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
