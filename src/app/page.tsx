@@ -33,8 +33,6 @@ export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Set hasEntered to false when the button IS intersecting (i.e., on-screen).
-        // and true when it is NOT intersecting (i.e., off-screen).
         setHasEntered(!entry.isIntersecting);
       },
       { 
@@ -99,7 +97,7 @@ export default function Home() {
               {sections.map((section, index) => (
                 <FadeIn key={index} delay={index * 200} duration={3600}>
                   <div className="text-left">
-                    <h2 className="text-xs font-light tracking-[0.3em] uppercase text-accent mb-6">
+                    <h2 className="text-xs md:text-sm font-normal tracking-[0.3em] uppercase text-accent mb-6">
                       {section.title}
                     </h2>
                     <p className="text-lg text-foreground font-light leading-relaxed">
