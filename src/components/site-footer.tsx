@@ -32,6 +32,17 @@ export function SiteFooter() {
             >
               Contact
             </Link>
+            <Link
+              href="/investors"
+              className={cn(
+                "transition-colors",
+                pathname === "/investors"
+                  ? "text-accent"
+                  : "text-foreground/50 hover:text-accent"
+              )}
+            >
+              Investors
+            </Link>
           </div>
         </div>
       </div>
