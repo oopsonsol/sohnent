@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility";
 
 const navLinks = [
-  { href: "/about", label: "FIRM PROFILE" },
+  { href: "/firm-profile", label: "FIRM PROFILE" },
   { href: "/contact", label: "CONTACT" },
 ];
 
