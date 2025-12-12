@@ -36,12 +36,13 @@ export function SiteHeader() {
             href="/"
             className={cn(
               "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-90 origin-left",
-              !isNavVisible && "invisible"
+              !isNavVisible && "invisible",
+              isHome && "invisible"
             )}
           >
             Sohn Enterprises
           </Link>
-          <nav className="flex items-center space-x-8 ml-16">
+          <nav className="flex items-center space-x-8">
             <div className="flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
