@@ -65,12 +65,12 @@ export default function Home() {
     <>
       <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4">
-        <div className="flex-grow flex flex-col items-center justify-end pb-44">
+        <div className="flex-grow flex flex-col items-center justify-end pb-32 md:pb-44">
             <FadeIn className="flex flex-col items-center">
-              <h1 className="text-7xl font-light tracking-[0.20em] uppercase">
+              <h1 className="text-5xl md:text-7xl font-light tracking-[0.20em] uppercase">
                 Sohn Enterprises
               </h1>
-              <p className="mt-8 text-base tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
+              <p className="mt-8 text-sm md:text-base tracking-[0.2em] md:tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
                 Private Capital • Strategic Deployment • Global Reach
               </p>
               <p className="mt-4 text-xs tracking-[0.25em] text-foreground/50 uppercase font-light">
@@ -93,9 +93,9 @@ export default function Home() {
       </section>
 
       <div ref={contentRef} className="scroll-mt-16">
-        <section className="py-32 md:py-48">
+        <section className="py-24 md:py-48">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col space-y-32 max-w-4xl mx-auto">
+            <div className="flex flex-col space-y-24 md:space-y-32 max-w-4xl mx-auto">
               {sections.map((section, index) => (
                 <FadeIn key={index} delay={index * 200} duration={3600}>
                   <div className="text-left">

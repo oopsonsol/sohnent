@@ -42,8 +42,8 @@ export function SiteHeader() {
           >
             Sohn Enterprises
           </Link>
-          <nav className="flex items-center space-x-8">
-            <div className="flex items-center space-x-8">
+          <nav className="flex items-center space-x-4 md:space-x-8">
+            <div className="flex items-center space-x-4 md:space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

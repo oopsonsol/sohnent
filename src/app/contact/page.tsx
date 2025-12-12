@@ -20,7 +20,7 @@ export default function ContactPage() {
               <div className="mt-12">
                 <a
                   href="mailto:operations@sohnenterprises.com"
-                  className="text-lg text-foreground/90 hover:underline"
+                  className="text-base md:text-lg text-foreground/90 hover:underline break-all"
                 >
                   operations@sohnenterprises.com
                 </a>
