@@ -70,10 +70,10 @@ export default function Home() {
               <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
                 Sohn<br className="md:hidden" /> Enterprises
               </h1>
-              <p className="mt-8 text-[0.9rem] md:text-base tracking-[0.15em] md:tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-light">
+              <p className="mt-8 text-[0.9rem] md:text-base tracking-[0.15em] md:tracking-[0.3em] text-foreground/70 max-w-4xl mx-auto uppercase font-normal">
                 Private Capital • Strategic Deployment • Global Reach
               </p>
-              <p className="mt-4 text-[0.8rem] tracking-[0.1em] md:tracking-[0.25em] text-foreground/50 uppercase font-light">
+              <p className="mt-4 text-[0.8rem] tracking-[0.1em] md:tracking-[0.25em] text-foreground/50 uppercase font-normal">
                 United States • LATAM Markets
               </p>
               <Button
