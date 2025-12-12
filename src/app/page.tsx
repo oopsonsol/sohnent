@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
+import { useVisibility } from '@/hooks/use-visibility.tsx';
 
 const sections = [
   {
@@ -25,15 +26,37 @@ const sections = [
 
 export default function Home() {
   const contentRef = React.useRef<HTMLDivElement>(null);
+  const { setHasEntered } = useVisibility();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHasEntered(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = contentRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [setHasEntered]);
 
   const handleScroll = () => {
+    setHasEntered(true);
     if (!contentRef.current) return;
 
     const targetElement = contentRef.current;
     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 1200; // Adjusted for a slightly faster scroll
+    const duration = 1200;
     let startTime: number | null = null;
 
     const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
@@ -88,7 +111,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col space-y-32 max-w-4xl mx-auto">
               {sections.map((section, index) => (
-                <FadeIn key={index} delay={index * 150} className="block">
+                <FadeIn key={index} delay={index * 150} className="block" duration={3000}>
                   <div className="text-left">
                     <h2 className="text-xs font-light tracking-[0.3em] uppercase text-accent mb-6">
                       {section.title}

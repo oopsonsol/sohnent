@@ -15,7 +15,7 @@ export default function AboutPage() {
     <>
       <SiteHeader />
       <FadeIn duration={3200}>
-        <section className="pt-12 pb-24 md:pt-20 md:pb-32">
+        <section className="pt-28 md:pt-36 pb-24 md:pb-32">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-3xl font-light leading-9 tracking-wide">

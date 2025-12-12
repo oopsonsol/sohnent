@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SiteFooter } from '@/components/site-footer';
+import { VisibilityProvider } from '@/hooks/use-visibility.tsx';
 
 export const metadata: Metadata = {
   title: 'Sohn Enterprises',
@@ -21,13 +22,15 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <div className="flex flex-col min-h-screen">
-          <main className="flex-grow">
-            {children}
-          </main>
-          <SiteFooter />
-        </div>
-        <Toaster />
+        <VisibilityProvider>
+          <div className="flex flex-col min-h-screen">
+            <main className="flex-grow">
+              {children}
+            </main>
+            <SiteFooter />
+          </div>
+          <Toaster />
+        </VisibilityProvider>
       </body>
     </html>
   );
