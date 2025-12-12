@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility";
-import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/about", label: "OVERVIEW" },
@@ -36,7 +35,7 @@ export function SiteHeader() {
           <Link
             href="/"
             className={cn(
-              "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-90 origin-left",
+              "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.75] origin-left",
               !isNavVisible && "invisible",
               isHome && "invisible"
             )}
@@ -50,7 +49,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-xs tracking-[0.2em] uppercase hover:text-accent transition-colors",
+                    "text-xs tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80]",
                     pathname === link.href
                       ? "text-accent font-medium"
                       : "text-foreground/60"
