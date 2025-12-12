@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/about", label: "OVERVIEW" },
@@ -15,32 +16,40 @@ export function SiteHeader() {
   const isHome = pathname === "/";
   const { hasEntered } = useVisibility();
 
-  const showNav = !isHome || hasEntered;
+  const showNavTrigger = !isHome || hasEntered;
+  const [isNavVisible, setIsNavVisible] = useState(false);
 
-  // Base classes with transition and the requested delay
-  const baseHeaderClasses = "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out delay-[7000ms]";
-  
-  // Classes for the "hidden" state on the homepage
-  const hiddenStateClasses = "opacity-0 -translate-y-4 pointer-events-none";
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
 
-  // Classes for the "visible" state on the homepage
-  const visibleStateClasses = "bg-background/[.94] backdrop-blur-sm opacity-100 translate-y-0";
+    if (showNavTrigger) {
+      timeoutId = setTimeout(() => {
+        setIsNavVisible(true);
+      }, 7000);
+    } else {
+      setIsNavVisible(false);
+    }
 
-  // Determine the final class string
-  const headerClassName = isHome
-    ? `${baseHeaderClasses} ${showNav ? visibleStateClasses : hiddenStateClasses}`
-    : baseHeaderClasses;
+    return () => clearTimeout(timeoutId);
+  }, [showNavTrigger]);
 
+  const headerClasses = cn(
+    "py-6 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+    {
+      "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
+      "bg-background/[.94] backdrop-blur-sm opacity-100 translate-y-0": isNavVisible,
+    }
+  );
 
   return (
-    <header className={headerClassName}>
+    <header className={headerClasses}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center max-w-[1100px] mx-auto">
           <Link
             href="/"
             className={cn(
               "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-90 origin-left",
-              isHome && "invisible"
+              !isNavVisible && "invisible"
             )}
           >
             Sohn Enterprises
@@ -53,7 +62,9 @@ export function SiteHeader() {
                   href={link.href}
                   className={cn(
                     "text-xs tracking-[0.2em] uppercase hover:text-accent transition-colors",
-                    pathname === link.href ? "text-accent font-medium" : "text-foreground/60"
+                    pathname === link.href
+                      ? "text-accent font-medium"
+                      : "text-foreground/60"
                   )}
                 >
                   {link.label}
