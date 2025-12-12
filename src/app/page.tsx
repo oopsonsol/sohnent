@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
 import { SiteHeader } from '@/components/site-header';
+import { useVisibility } from '@/hooks/use-visibility';
 
 const sections = [
   {
@@ -26,12 +27,35 @@ const sections = [
 
 export default function Home() {
   const contentRef = React.useRef<HTMLDivElement>(null);
+  const enterButtonRef = React.useRef<HTMLButtonElement>(null);
+  const { setHasEntered } = useVisibility();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+            setHasEntered(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentButton = enterButtonRef.current;
+    if (currentButton) {
+      observer.observe(currentButton);
+    }
+
+    return () => {
+      if (currentButton) {
+        observer.unobserve(currentButton);
+      }
+    };
+  }, [setHasEntered]);
 
   const handleScroll = () => {
+    setHasEntered(true);
     if (!contentRef.current) return;
-
-    const targetElement = contentRef.current;
-    targetElement.scrollIntoView({ behavior: 'smooth' });
+    contentRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -50,6 +74,7 @@ export default function Home() {
                 United States • LATAM Markets
               </p>
               <Button
+                ref={enterButtonRef}
                 variant="link"
                 size="lg"
                 className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"

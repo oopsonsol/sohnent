@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useVisibility } from "@/hooks/use-visibility";
 
 const navLinks = [
   { href: "/about", label: "OVERVIEW" },
@@ -12,12 +13,16 @@ const navLinks = [
 export function SiteHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const { hasEntered } = useVisibility();
+
+  const showNav = !isHome || hasEntered;
 
   return (
     <header
       className={cn(
-        "py-6 fixed top-0 left-0 right-0 z-50",
-        isHome && "bg-background/[.94] backdrop-blur-sm"
+        "py-6 fixed top-0 left-0 right-0 z-50 transition-opacity duration-300",
+        isHome && showNav && "bg-background/[.94] backdrop-blur-sm",
+        isHome && !showNav && "opacity-0 pointer-events-none"
       )}
     >
       <div className="container mx-auto px-4">
