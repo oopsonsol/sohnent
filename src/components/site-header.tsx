@@ -19,7 +19,7 @@ export function SiteHeader() {
           <Link href="/" className="text-lg font-normal tracking-[0.2em] uppercase hover:text-foreground/70 transition-colors scale-90 origin-left">
             Sohn Enterprises
           </Link>
-          <nav className="flex items-center space-x-8">
+          <nav className="flex items-center space-x-8 ml-16">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
