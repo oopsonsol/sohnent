@@ -39,7 +39,7 @@ export default function InvestorsPage() {
                 INVESTOR PORTAL
               </h1>
               <p className="mt-4 text-base text-foreground/60">
-                {showForm ? "Please provide your access credentials." : "Please sign in to continue."}
+                {showForm ? "Restricted access. Enter credentials to proceed." : "Please sign in to continue."}
               </p>
               
               <div className="mt-12 w-full max-w-sm mx-auto">
@@ -79,7 +79,7 @@ export default function InvestorsPage() {
               </div>
 
               <p className="mt-12 text-xs text-foreground/40">
-                Access available only to pre-approved investors.
+                For authorized access only.
               </p>
             </div>
           </div>
