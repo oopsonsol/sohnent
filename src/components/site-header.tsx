@@ -15,7 +15,7 @@ export function SiteHeader() {
   return (
     <header className="py-6">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center max-w-screen-xl mx-auto">
+        <div className="flex justify-between items-center max-w-6xl mx-auto">
           <Link href="/" className="text-lg font-normal tracking-[0.2em] uppercase hover:text-foreground/70 transition-colors scale-90 origin-left">
             Sohn Enterprises
           </Link>
