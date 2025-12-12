@@ -35,7 +35,7 @@ export function SiteHeader() {
           <Link
             href="/"
             className={cn(
-              "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.75] origin-left",
+              "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.85] origin-left",
               !isNavVisible && "invisible",
               isHome && "invisible"
             )}
