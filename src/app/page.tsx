@@ -83,7 +83,7 @@ export default function Home() {
                 className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
                 onClick={handleScroll}
               >
-                ENTER
+                OVERVIEW
               </Button>
             </FadeIn>
         </div>
