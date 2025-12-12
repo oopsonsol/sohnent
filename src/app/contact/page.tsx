@@ -1,7 +1,6 @@
 "use client";
 
 import { SiteHeader } from "@/components/site-header";
-import { ContactForm } from "@/components/contact-form";
 import { FadeIn } from "@/components/fade-in";
 
 export default function ContactPage() {
@@ -13,14 +12,19 @@ export default function ContactPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-normal tracking-widest uppercase">
-                Contact
+                CONTACT
               </h1>
               <p className="mt-4 text-base text-foreground/60">
-                Inquiries are directed to our U.S. operations team for review.
+                Inquiries are reviewed by our U.S. operations team.
               </p>
-            </div>
-            <div className="max-w-xl mx-auto mt-12">
-              <ContactForm />
+              <div className="mt-12">
+                <a
+                  href="mailto:operations@sohnenterprises.com"
+                  className="text-lg text-foreground/90 hover:underline"
+                >
+                  operations@sohnenterprises.com
+                </a>
+              </div>
             </div>
           </div>
         </section>
