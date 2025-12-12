@@ -19,7 +19,7 @@ export function SiteHeader() {
 
   const headerClasses = cn(
     "py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
-    isHome ? "delay-[7000ms]" : "",
+    isHome ? "delay-1000" : "",
     isNavVisible ? "duration-500" : "duration-300",
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
@@ -49,7 +49,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-xs tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95]",
+                    "text-xs tracking-widest md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95]",
                     pathname === link.href
                       ? "text-accent font-medium"
                       : "text-foreground/60"
