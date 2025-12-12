@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
-import { useVisibility } from '@/hooks/use-visibility.tsx';
+import { useVisibility } from '@/hooks/use-visibility';
 
 const sections = [
   {
@@ -26,55 +26,34 @@ const sections = [
 
 export default function Home() {
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const { setHasEntered } = useVisibility();
+  const enterButtonRef = React.useRef<HTMLButtonElement>(null);
+  const { setEnterButtonVisible } = useVisibility();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setHasEntered(entry.isIntersecting);
+        setEnterButtonVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
 
-    const currentRef = contentRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
+    const currentButtonRef = enterButtonRef.current;
+    if (currentButtonRef) {
+      observer.observe(currentButtonRef);
     }
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (currentButtonRef) {
+        observer.unobserve(currentButtonRef);
       }
     };
-  }, [setHasEntered]);
+  }, [setEnterButtonVisible]);
 
   const handleScroll = () => {
-    setHasEntered(true);
     if (!contentRef.current) return;
 
     const targetElement = contentRef.current;
-    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    const duration = 1200;
-    let startTime: number | null = null;
-
-    const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
-    };
-
-    const animation = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    };
-
-    requestAnimationFrame(animation);
+    targetElement.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -92,6 +71,7 @@ export default function Home() {
                 United States • LATAM Markets
               </p>
               <Button
+                ref={enterButtonRef}
                 variant="link"
                 size="lg"
                 className="mt-16 tracking-[0.3em] font-normal text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"

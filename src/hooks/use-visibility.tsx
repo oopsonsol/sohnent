@@ -1,21 +1,21 @@
 "use client";
 
-import { createContext, useContext, useState, useMemo, type PropsWithChildren } from 'react';
+import { createContext, useContext, useState, useMemo, type PropsWithChildren, type Dispatch, type SetStateAction } from 'react';
 
 type VisibilityContextType = {
-  hasEntered: boolean;
-  setHasEntered: (hasEntered: boolean) => void;
+  isEnterButtonVisible: boolean;
+  setEnterButtonVisible: Dispatch<SetStateAction<boolean>>;
 };
 
 const VisibilityContext = createContext<VisibilityContextType | undefined>(undefined);
 
 export function VisibilityProvider({ children }: PropsWithChildren) {
-  const [hasEntered, setHasEntered] = useState(false);
+  const [isEnterButtonVisible, setEnterButtonVisible] = useState(true);
 
   const value = useMemo(() => ({
-    hasEntered,
-    setHasEntered,
-  }), [hasEntered]);
+    isEnterButtonVisible,
+    setEnterButtonVisible,
+  }), [isEnterButtonVisible]);
 
   return (
     <VisibilityContext.Provider value={value}>

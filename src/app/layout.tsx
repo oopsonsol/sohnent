@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SiteFooter } from '@/components/site-footer';
-import { VisibilityProvider } from '@/hooks/use-visibility.tsx';
+import { VisibilityProvider } from '@/hooks/use-visibility';
 
 export const metadata: Metadata = {
   title: 'Sohn Enterprises',
