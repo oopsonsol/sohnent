@@ -20,11 +20,12 @@ export function SiteHeader() {
 
   const headerClasses = cn(
     "py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
-    isHome ? "duration-500 delay-[7000ms]" : "duration-300",
+    isHome ? "delay-[7000ms]" : "",
+    isNavVisible ? "duration-500" : "duration-300",
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
       "opacity-100 translate-y-0": isNavVisible,
-      "bg-background/[.94] backdrop-blur-sm": isHome ? isNavVisible : true,
+      "bg-background/[.94] backdrop-blur-sm": isNavVisible,
     }
   );
 
