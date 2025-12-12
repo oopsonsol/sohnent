@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
+import { SiteHeader } from '@/components/site-header';
 
 const sections = [
   {
@@ -35,6 +36,7 @@ export default function Home() {
 
   return (
     <>
+      <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4">
         <div className="flex-grow flex flex-col items-center justify-end pb-44">
             <FadeIn className="flex flex-col items-center">
