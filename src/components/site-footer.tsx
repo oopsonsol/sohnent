@@ -15,10 +15,10 @@ export function SiteFooter() {
   return (
     <footer className="py-8">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto flex justify-between items-center">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
           <div className="flex flex-col text-xs text-foreground/50 tracking-widest uppercase">
             <span>© {year} Sohn Enterprises</span>
-            <span className="scale-[.85] origin-left">LIMITED LIABILITY COMPANY</span>
+            <span className="scale-[.85] origin-center md:origin-left">LIMITED LIABILITY COMPANY</span>
           </div>
           <div className="flex items-center gap-6 text-xs tracking-widest uppercase">
             <Link
