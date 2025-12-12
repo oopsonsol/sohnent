@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, type PropsWithChildren } from 'react';
 import { cn } from '@/lib/utils';
 
-export function FadeIn({ children, className, delay = 0, duration = 3000 }: PropsWithChildren<{ className?: string, delay?: number, duration?: number }>) {
+export function FadeIn({ children, className, delay = 0, duration = 3600 }: PropsWithChildren<{ className?: string, delay?: number, duration?: number }>) {
   const [isVisible, setVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
