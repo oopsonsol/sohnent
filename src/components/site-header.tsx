@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility.tsx";
-import { FadeIn } from "./fade-in";
 
 const navLinks = [
   { href: "/about", label: "OVERVIEW" },
@@ -26,7 +25,7 @@ export function SiteHeader() {
             Sohn Enterprises
           </Link>
           <nav className="flex items-center space-x-8 ml-16">
-            <FadeIn duration={500} className={cn("flex items-center space-x-8", showNav ? 'opacity-100' : 'opacity-0')}>
+            <div className={cn("flex items-center space-x-8 transition-opacity duration-500", showNav ? 'opacity-100' : 'opacity-0')}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -39,7 +38,7 @@ export function SiteHeader() {
                   {link.label}
                 </Link>
               ))}
-            </FadeIn>
+            </div>
           </nav>
         </div>
       </div>
