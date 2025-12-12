@@ -35,9 +35,9 @@ export function SiteHeader() {
       <div className="container mx-auto px-4">
         <div className="flex justify-center md:justify-between items-center max-w-[1100px] mx-auto relative">
           
-          <div className="flex items-center md:hidden absolute left-0">
+          <div className="flex items-center absolute left-0">
             {isInteriorPage && (
-              <Link href="/" className="text-foreground/60 hover:text-accent transition-colors">
+              <Link href="/" className="text-foreground/60 hover:text-accent transition-colors md:hidden">
                 <ChevronLeft className="w-5 h-5" />
               </Link>
             )}
@@ -47,7 +47,8 @@ export function SiteHeader() {
             href="/"
             className={cn(
               "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80] origin-left",
-              "hidden md:inline-block"
+              "hidden",
+              !isHome && "md:inline-block"
             )}
           >
             Sohn Enterprises
