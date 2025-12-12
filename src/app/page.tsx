@@ -65,7 +65,7 @@ export default function Home() {
     <>
       <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4">
-        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-32">
+        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-40">
             <FadeIn className="flex flex-col items-center">
               <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
                 Sohn<br className="md:hidden" /> Enterprises
