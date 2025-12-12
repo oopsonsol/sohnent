@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility";
+import { ChevronLeft } from "lucide-react";
 
 const navLinks = [
   { href: "/firm-profile", label: "FIRM PROFILE" },
@@ -16,6 +17,7 @@ export function SiteHeader() {
   const { hasEntered } = useVisibility();
   
   const isNavVisible = !isHome || hasEntered;
+  const isInteriorPage = ["/firm-profile", "/contact", "/investors"].includes(pathname);
 
   const headerClasses = cn(
     "py-4 md:py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
@@ -31,7 +33,13 @@ export function SiteHeader() {
   return (
     <header className={headerClasses}>
       <div className="container mx-auto px-4">
-        <div className="flex justify-center md:justify-between items-center max-w-[1100px] mx-auto">
+        <div className="flex justify-center md:justify-between items-center max-w-[1100px] mx-auto relative">
+          {isInteriorPage && (
+            <Link href="/" className="md:hidden absolute left-0 text-foreground/60 hover:text-accent transition-colors">
+              <ChevronLeft className="w-5 h-5" />
+            </Link>
+          )}
+
           <Link
             href="/"
             className={cn(
