@@ -33,27 +33,27 @@ export function SiteHeader() {
   return (
     <header className={headerClasses}>
       <div className="container mx-auto px-4">
-        <div className="flex justify-center md:justify-between items-center max-w-[1100px] mx-auto relative">
+        <div className="flex justify-center items-center max-w-[1100px] mx-auto relative">
           
-          <div className="flex items-center absolute left-0">
+          <div className="absolute left-0">
             {isInteriorPage && (
-              <Link href="/" className="text-foreground/60 hover:text-accent transition-colors md:hidden">
+              <Link href="/" className="inline-flex md:hidden text-foreground/60 hover:text-accent transition-colors">
                 <ChevronLeft className="w-5 h-5" />
               </Link>
             )}
+             <Link
+              href="/"
+              className={cn(
+                "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80] origin-left",
+                "hidden",
+                !isHome && "md:inline-block"
+              )}
+            >
+              Sohn Enterprises
+            </Link>
           </div>
 
-          <Link
-            href="/"
-            className={cn(
-              "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80] origin-left",
-              "hidden",
-              !isHome && "md:inline-block"
-            )}
-          >
-            Sohn Enterprises
-          </Link>
-          <nav className="flex items-center space-x-4 md:space-x-8">
+          <nav className="flex-1 flex justify-center md:justify-end">
             <div className="flex items-center space-x-4 md:space-x-8">
               {navLinks.map((link) => (
                 <Link
