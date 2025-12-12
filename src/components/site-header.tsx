@@ -31,13 +31,12 @@ export function SiteHeader() {
   return (
     <header className={headerClasses}>
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center max-w-[1100px] mx-auto">
+        <div className="flex justify-center md:justify-between items-center max-w-[1100px] mx-auto">
           <Link
             href="/"
             className={cn(
               "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80] origin-left",
-              !isNavVisible && "invisible",
-              isHome && "invisible"
+              (isHome || !isNavVisible) && "hidden md:inline-block"
             )}
           >
             Sohn Enterprises
@@ -49,7 +48,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-[10px] tracking-widest md:text-xs md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95]",
+                    "text-[10px] tracking-widest md:text-xs md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95] whitespace-nowrap",
                     pathname === link.href
                       ? "text-accent font-medium"
                       : "text-foreground/60"
