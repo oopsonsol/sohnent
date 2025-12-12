@@ -21,7 +21,7 @@ export function SiteHeader() {
 
   const headerClasses = cn(
     "py-4 md:py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
-    isHome ? "delay-1000" : "",
+    isHome ? "delay-[250ms]" : "",
     isNavVisible ? "duration-500" : "duration-300",
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
@@ -34,11 +34,14 @@ export function SiteHeader() {
     <header className={headerClasses}>
       <div className="container mx-auto px-4">
         <div className="flex justify-center md:justify-between items-center max-w-[1100px] mx-auto relative">
-          {isInteriorPage && (
-            <Link href="/" className="md:hidden absolute left-0 text-foreground/60 hover:text-accent transition-colors">
-              <ChevronLeft className="w-5 h-5" />
-            </Link>
-          )}
+          
+          <div className="flex items-center md:hidden absolute left-0">
+            {isInteriorPage && (
+              <Link href="/" className="text-foreground/60 hover:text-accent transition-colors">
+                <ChevronLeft className="w-5 h-5" />
+              </Link>
+            )}
+          </div>
 
           <Link
             href="/"
