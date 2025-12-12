@@ -25,8 +25,8 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-xs tracking-widest uppercase hover:text-foreground/70 transition-colors",
-                  pathname === link.href ? "text-foreground font-medium" : "text-foreground/60"
+                  "text-xs tracking-widest uppercase hover:text-accent transition-colors",
+                  pathname === link.href ? "text-accent font-medium" : "text-foreground/60"
                 )}
               >
                 {link.label}
