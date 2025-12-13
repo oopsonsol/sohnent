@@ -28,11 +28,19 @@ export function SiteHeader() {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
       "opacity-100 translate-y-0": isNavVisible,
     },
-    isNavVisible && "bg-background/[.41] backdrop-blur-sm"
+    isNavVisible && "backdrop-blur-sm"
   );
 
   return (
     <header className={headerClasses}>
+       {isNavVisible && (
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundImage: "linear-gradient(to bottom, hsl(var(--background)) 50%, transparent)",
+          }}
+        />
+      )}
       <div className="container mx-auto px-4">
         <div className="flex justify-center items-center max-w-[1100px] mx-auto relative">
           
