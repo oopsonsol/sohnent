@@ -6,8 +6,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+
 
 export default function ContactPage() {
+  const [captchaToken, setCaptchaToken] = useState("");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    if (!captchaToken) {
+      event.preventDefault();
+      alert("Please complete the captcha.");
+    }
+  };
+
   return (
     <>
       <SiteHeader />
@@ -24,8 +36,9 @@ export default function ContactPage() {
                 Qualified inquiries only. Response within 1–2 business days.
               </p>
 
-              <form action="https://api.web3forms.com/submit" method="POST" className="mt-12 max-w-lg mx-auto text-left space-y-6">
+              <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="mt-12 max-w-lg mx-auto text-left space-y-6">
                 <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
+                <input type="hidden" name="h-captcha-response" value={captchaToken} />
                  <div className="grid w-full items-center gap-1.5">
                     <Label htmlFor="name" className="text-xs text-foreground/50 tracking-widest uppercase">Name</Label>
                     <Input type="text" id="name" name="name" required />
@@ -37,6 +50,13 @@ export default function ContactPage() {
                  <div className="grid w-full items-center gap-1.5">
                     <Label htmlFor="message" className="text-xs text-foreground/50 tracking-widest uppercase">Message</Label>
                     <Textarea id="message" name="message" required rows={4} />
+                </div>
+                <div className="flex justify-center pt-4">
+                  <HCaptcha
+                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    onVerify={setCaptchaToken}
+                    reCaptchaCompat={false}
+                  />
                 </div>
                 <div className="text-center pt-4">
                     <Button
