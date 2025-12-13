@@ -91,7 +91,7 @@ export default function Home() {
               className="h-[54px] w-px relative -top-28"
               style={{
                 background:
-                  "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 10%, hsl(var(--foreground)) 90%, transparent)",
+                  "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 15%, hsl(var(--foreground)) 85%, transparent)",
                 opacity: 0.41,
               }}
             />
@@ -106,7 +106,7 @@ export default function Home() {
               {sections.map((section, index) => (
                 <FadeIn key={index} delay={index * 200} duration={1337}>
                   <div className="text-left">
-                    <h2 className="text-[13px] md:text-[15px] font-medium tracking-[0.3em] uppercase text-accent mb-6">
+                    <h2 className="text-[13.5px] md:text-[15px] font-medium tracking-[0.3em] uppercase text-accent mb-6">
                       {section.title}
                     </h2>
                     <p className="text-lg text-foreground font-light leading-relaxed">
