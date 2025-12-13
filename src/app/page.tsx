@@ -92,7 +92,7 @@ export default function Home() {
               style={{
                 background:
                   "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 25%, hsl(var(--foreground)) 75%, transparent)",
-                opacity: 0.41,
+                opacity: 0.48,
               }}
             />
           </FadeIn>
