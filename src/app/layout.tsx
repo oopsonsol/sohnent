@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SiteFooter } from '@/components/site-footer';
 import { VisibilityProvider } from '@/hooks/use-visibility';
+import Script from 'next/script';
 
 const siteConfig = {
   name: "Sohn Enterprises",
@@ -129,6 +130,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </VisibilityProvider>
+        <Script src="https://web3forms.com/client/script.js" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -6,56 +6,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useState, useRef } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPageContent() {
-  const [token, setToken] = useState<string | null>(null);
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const form = event.currentTarget;
+    const hCaptchaResponse = (form.querySelector('textarea[name=h-captcha-response]') as HTMLTextAreaElement)?.value;
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!token) {
+    if (!hCaptchaResponse) {
+      event.preventDefault();
       toast({
         title: "Captcha Required",
         description: "Please complete the captcha before submitting.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const formData = new FormData(event.currentTarget);
-    formData.append("h-captcha-response", token);
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: formData,
-      });
-
-      const jsonResponse = await response.json();
-
-      if (jsonResponse.success) {
-        const redirectUrl = jsonResponse.redirect || 'https://web3forms.com/success';
-        window.location.href = redirectUrl;
-      } else {
-        toast({
-          title: "Submission Failed",
-          description: jsonResponse.message || "An unexpected error occurred.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "Network Error",
-        description: "Could not submit the form. Please try again later.",
         variant: "destructive",
       });
     }
@@ -78,7 +42,8 @@ export default function ContactPageContent() {
               </p>
 
               <form 
-                ref={formRef}
+                action="https://api.web3forms.com/submit"
+                method="POST"
                 onSubmit={handleSubmit} 
                 className="mt-12 max-w-lg mx-auto text-left space-y-6"
               >
@@ -100,11 +65,7 @@ export default function ContactPageContent() {
                     <Textarea id="message" name="message" required rows={4} maxLength={360} />
                 </div>
                 <div className="flex justify-center pt-4">
-                  <HCaptcha
-                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                    onVerify={setToken}
-                    reCaptchaCompat={false}
-                  />
+                    <div className="h-captcha" data-captcha="true"></div>
                 </div>
                 <div className="text-center pt-4">
                     <Button
