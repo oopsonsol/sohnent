@@ -91,7 +91,7 @@ export default function Home() {
               className="h-[54px] w-px relative -top-28"
               style={{
                 background:
-                  "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 25%, hsl(var(--foreground)) 75%, transparent)",
+                  "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 30%, hsl(var(--foreground)) 70%, transparent)",
                 opacity: 0.48,
               }}
             />
