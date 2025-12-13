@@ -55,7 +55,7 @@ export function SiteHeader() {
           </div>
 
           <nav className="flex-1 flex justify-center md:justify-end">
-            <div className="flex items-center space-x-4 md:space-x-6">
+            <div className="flex items-center space-x-4">
               {navLinks.map((link, index) => (
                 <React.Fragment key={link.href}>
                   <Link
