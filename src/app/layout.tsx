@@ -70,9 +70,9 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
 };
@@ -105,9 +105,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
-        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
-        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color={siteConfig.theme_color} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
