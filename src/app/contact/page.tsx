@@ -39,17 +39,19 @@ export default function ContactPage() {
               <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="mt-12 max-w-lg mx-auto text-left space-y-6">
                 <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                 <input type="hidden" name="h-captcha-response" value={captchaToken} />
-                 <div className="grid w-full items-center gap-1.5">
-                    <Label htmlFor="name" className="text-xs text-foreground/50 tracking-widest uppercase">Name</Label>
-                    <Input type="text" id="name" name="name" required />
-                </div>
-                 <div className="grid w-full items-center gap-1.5">
-                    <Label htmlFor="email" className="text-xs text-foreground/50 tracking-widest uppercase">Email</Label>
-                    <Input type="email" id="email" name="email" required />
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-6">
+                  <div className="grid w-full items-center gap-1.5">
+                      <Label htmlFor="name" className="text-xs text-foreground/50 tracking-widest uppercase">Name</Label>
+                      <Input type="text" id="name" name="name" required />
+                  </div>
+                  <div className="grid w-full items-center gap-1.5">
+                      <Label htmlFor="email" className="text-xs text-foreground/50 tracking-widest uppercase">Email</Label>
+                      <Input type="email" id="email" name="email" required />
+                  </div>
                 </div>
                  <div className="grid w-full items-center gap-1.5">
                     <Label htmlFor="message" className="text-xs text-foreground/50 tracking-widest uppercase">Message</Label>
-                    <Textarea id="message" name="message" required rows={4} />
+                    <Textarea id="message" name="message" required rows={4} maxLength={360} />
                 </div>
                 <div className="flex justify-center pt-4">
                   <HCaptcha
@@ -68,16 +70,6 @@ export default function ContactPage() {
                     </Button>
                 </div>
               </form>
-
-              <div className="mt-16">
-                 <p className="text-xs text-foreground/50 tracking-widest uppercase mb-2">Or email directly</p>
-                <a
-                  href="mailto:operations@sohnenterprises.com"
-                  className="text-base md:text-lg text-foreground/90 hover:underline break-all"
-                >
-                  operations@sohnenterprises.com
-                </a>
-              </div>
             </div>
           </div>
         </section>
