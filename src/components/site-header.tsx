@@ -33,13 +33,21 @@ export function SiteHeader() {
   return (
     <header className={headerClasses}>
        {isNavVisible && (
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background: `linear-gradient(to top, hsla(var(--background-hsl), 0) 0%, hsla(var(--background-hsl), 0.55) 60%, hsla(var(--background-hsl), 0.92) 100%)`,
-            backdropFilter: 'blur(10px)',
-          }}
-        />
+        <>
+          <div
+            className="absolute inset-0 -z-10"
+            style={{
+              backgroundColor: 'hsla(var(--background-hsl), 0.75)',
+              backdropFilter: 'blur(10px)',
+            }}
+          />
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[22px] pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, hsla(var(--background-hsl), 1), hsla(var(--background-hsl), 0))',
+            }}
+          />
+        </>
       )}
       <div className="container mx-auto px-4">
         <div className="flex justify-center items-center max-w-[1100px] mx-auto relative">
