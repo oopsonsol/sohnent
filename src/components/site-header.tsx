@@ -61,7 +61,7 @@ export function SiteHeader() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-[13.5px] tracking-widest md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95] whitespace-nowrap",
+                      "text-[13px] tracking-widest md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95] whitespace-nowrap",
                       pathname === link.href
                         ? "text-accent font-medium"
                         : "text-foreground/60"
