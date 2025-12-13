@@ -23,7 +23,7 @@ export default function ContactPageContent() {
     <>
       <SiteHeader />
       <FadeIn duration={1600}>
-        <section className="py-36 md:py-48">
+        <section className="pt-28 md:pt-36 pb-24 md:pb-32">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-normal tracking-widest uppercase">
