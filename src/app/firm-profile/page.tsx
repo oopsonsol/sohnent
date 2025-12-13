@@ -2,6 +2,15 @@
 
 import { SiteHeader } from "@/components/site-header";
 import { FadeIn } from "@/components/fade-in";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Firm Profile',
+    description: 'Firm profile for Sohn Enterprises — a privately held U.S. investment syndicate with strategic operations in LATAM. Discipline-driven capital deployment and institutional-grade execution.',
+    alternates: {
+      canonical: '/firm-profile',
+    },
+};
 
 const points = [
     "Discipline-driven capital deployment",

@@ -13,7 +13,7 @@ const siteConfig = {
   markets: "United States • LATAM Markets",
   short_og_description: "Privately held U.S. investment syndicate with strategic operations in LATAM.",
   keywords: "private capital, investment syndicate, real estate investment, structured development, land acquisition, LATAM, United States",
-  theme_color: "#D4AF37",
+  theme_color: "#C6A15A",
   contact_email: "operations@sohnenterprises.com"
 };
 
@@ -36,10 +36,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  referrer: 'origin-when-cross-origin',
+  referrer: 'strict-origin-when-cross-origin',
   formatDetection: {
-    email: false,
-    address: false,
     telephone: false,
   },
   openGraph: {
@@ -72,9 +70,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 export const viewport: Viewport = {

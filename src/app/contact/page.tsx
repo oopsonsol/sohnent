@@ -8,6 +8,15 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Contact',
+    description: 'Contact Sohn Enterprises. Qualified inquiries only. Response within 1–2 business days.',
+    alternates: {
+      canonical: '/contact',
+    },
+};
 
 
 export default function ContactPage() {

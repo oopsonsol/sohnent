@@ -6,6 +6,15 @@ import { FadeIn } from "@/components/fade-in";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Investor Portal',
+    description: 'Investor Portal for authorized access to Sohn Enterprises materials and updates.',
+    alternates: {
+      canonical: '/investors',
+    },
+};
 
 export default function InvestorsPage() {
   const [showForm, setShowForm] = useState(false);
