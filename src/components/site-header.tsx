@@ -10,6 +10,7 @@ import React from "react";
 const navLinks = [
   { href: "/firm-profile", label: "FIRM PROFILE" },
   { href: "/contact", label: "CONTACT" },
+  { href: "/investors", label: "INVESTORS" },
 ];
 
 export function SiteHeader() {

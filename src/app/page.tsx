@@ -102,11 +102,11 @@ export default function Home() {
       <div ref={contentRef} className="scroll-mt-16">
         <section className="py-24 md:py-48">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col space-y-24 md:space-y-32 max-w-4xl mx-auto">
+            <div className="flex flex-col space-y-20 md:space-y-28 max-w-4xl mx-auto">
               {sections.map((section, index) => (
                 <FadeIn key={index} delay={index * 200} duration={1337}>
                   <div className="text-left">
-                    <h2 className="text-[13.5px] md:text-[15px] font-medium tracking-[0.3em] uppercase text-accent mb-6">
+                    <h2 className="text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-accent mb-6">
                       {section.title}
                     </h2>
                     <p className="text-lg text-foreground font-light leading-relaxed">

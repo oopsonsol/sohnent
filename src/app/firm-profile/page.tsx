@@ -7,7 +7,7 @@ const points = [
     "Discipline-driven capital deployment",
     "Institutional regulatory compliance",
     "Discreet operational structure",
-    "Detail intentionally limited"
+    "Discretion by design"
 ];
 
 export default function AboutPage() {
