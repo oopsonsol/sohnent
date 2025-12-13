@@ -8,15 +8,59 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useRef } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPageContent() {
-  const [captchaToken, setCaptchaToken] = useState("");
+  const [token, setToken] = useState<string | null>(null);
+  const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (!captchaToken) {
-      event.preventDefault();
-      alert("Please complete the captcha.");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!token) {
+      toast({
+        title: "Captcha Required",
+        description: "Please complete the captcha before submitting.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("h-captcha-response", token);
+    
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      });
+
+      const jsonResponse = await response.json();
+
+      if (jsonResponse.success) {
+        window.location.href = jsonResponse.redirect;
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: jsonResponse.message || "An unexpected error occurred.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Network Error",
+        description: "Could not submit the form. Please try again later.",
+        variant: "destructive",
+      });
     }
   };
 
@@ -37,15 +81,12 @@ export default function ContactPageContent() {
               </p>
 
               <form 
-                ref={formRef} 
-                action="https://api.web3forms.com/submit"
-                method="POST"
+                ref={formRef}
                 onSubmit={handleSubmit} 
                 className="mt-12 max-w-lg mx-auto text-left space-y-6"
               >
                 <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                 <input type="hidden" name="redirect" value="https://web3forms.com/success" />
-                {captchaToken && <input type="hidden" name="h-captcha-response" value={captchaToken} />}
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-6">
                   <div className="grid w-full items-center gap-1.5">
@@ -53,7 +94,7 @@ export default function ContactPageContent() {
                       <Input type="text" id="name" name="name" required />
                   </div>
                   <div className="grid w-full items-center gap-1.5">
-                      <Label htmlFor="email" className="text-xs text-foreground/50 tracking-widest uppercase">Email</Label>
+                      <Label htmlFor="email" className="text-xs text-foreground/50 tracking-widest uppercase">Email</Label>                      
                       <Input type="email" id="email" name="email" required />
                   </div>
                 </div>
@@ -64,7 +105,7 @@ export default function ContactPageContent() {
                 <div className="flex justify-center pt-4">
                   <HCaptcha
                     sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                    onVerify={setCaptchaToken}
+                    onVerify={setToken}
                     reCaptchaCompat={false}
                   />
                 </div>
