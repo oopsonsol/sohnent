@@ -30,24 +30,21 @@ export default function ContactPageContent() {
 
     const formData = new FormData(event.currentTarget);
     formData.append("h-captcha-response", token);
-    
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: json,
+        body: formData,
       });
 
       const jsonResponse = await response.json();
 
       if (jsonResponse.success) {
-        window.location.href = jsonResponse.redirect;
+        const redirectUrl = jsonResponse.redirect || 'https://web3forms.com/success';
+        window.location.href = redirectUrl;
       } else {
         toast({
           title: "Submission Failed",
