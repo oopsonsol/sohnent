@@ -87,7 +87,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center relative">
           <FadeIn duration={1700} delay={500}>
-            <div className="h-16 w-px bg-foreground/[.18] relative -top-24" />
+            <div className="h-24 w-px bg-gradient-to-b from-transparent via-foreground/[.23] to-transparent relative -top-28" />
           </FadeIn>
         </div>
       </section>
