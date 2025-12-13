@@ -27,7 +27,6 @@ export function SiteHeader() {
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
       "opacity-100 translate-y-0": isNavVisible,
-      "bg-background/[.69] backdrop-blur-sm": isNavVisible,
     }
   );
 
