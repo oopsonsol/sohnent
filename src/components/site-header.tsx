@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility";
 import { ChevronLeft } from "lucide-react";
 import React from "react";
-import Image from "next/image";
 
 const navLinks = [
   { href: "/firm-profile", label: "FIRM PROFILE" },
@@ -57,18 +56,12 @@ export function SiteHeader() {
              <Link
               href="/"
               className={cn(
-                "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.80] origin-left",
+                "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors",
                 "hidden",
-                !isHome && "md:inline-flex items-center"
+                !isHome && "md:block"
               )}
             >
-              <Image
-                src="/sohn-key-logo.svg"
-                alt="Sohn Enterprises Logo"
-                width={140}
-                height={30}
-                className="h-auto w-auto opacity-80"
-              />
+              Sohn Enterprises
             </Link>
           </div>
 
