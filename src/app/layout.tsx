@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SiteFooter } from '@/components/site-footer';
@@ -36,7 +36,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  themeColor: siteConfig.theme_color,
   referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: false,
@@ -76,6 +75,10 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
+};
+
+export const viewport: Viewport = {
+  themeColor: siteConfig.theme_color,
 };
 
 

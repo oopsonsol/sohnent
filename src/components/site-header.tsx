@@ -23,7 +23,7 @@ export function SiteHeader() {
 
   const headerClasses = cn(
     "py-4 md:py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
-    isHome ? "delay-[250ms]" : "",
+    isHome ? "transition-delay-[250ms]" : "",
     isNavVisible ? "duration-500" : "duration-300",
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
