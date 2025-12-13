@@ -27,7 +27,7 @@ const sections = [
 
 export default function HomePage() {
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const enterButtonRef = React.useRef<HTMLElement>(null);
+  const enterButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const { setHasEntered } = useVisibility();
 
   useEffect(() => {
