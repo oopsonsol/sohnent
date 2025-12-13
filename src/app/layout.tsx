@@ -25,12 +25,14 @@ export default function RootLayout({
         <div
           className="fixed inset-0 -z-10 pointer-events-none"
           style={{
-            backgroundImage:
-              "radial-gradient(ellipse at top center, hsla(42, 85%, 60%, 0.16) 0%, hsla(42, 85%, 60%, 0.06) 35%, transparent 70%)",
-            backgroundPosition: "top center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "140% 75vh",
-            filter: "blur(2px)",
+            backgroundImage: `
+              radial-gradient(ellipse at top center, hsla(42,45%,55%,0.09) 0%, transparent 70%),
+              radial-gradient(ellipse at top center, hsla(42,45%,55%,0.04) 0%, transparent 55%)
+            `,
+            backgroundPosition: 'center 0, center 0',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: '140% 90vh, 110% 60vh',
+            filter: 'blur(0.2px)',
           }}
         />
         <VisibilityProvider>
