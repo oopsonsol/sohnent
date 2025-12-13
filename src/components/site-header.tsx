@@ -27,8 +27,7 @@ export function SiteHeader() {
     {
       "opacity-0 -translate-y-4 pointer-events-none": !isNavVisible,
       "opacity-100 translate-y-0": isNavVisible,
-    },
-    isNavVisible && "backdrop-blur-sm"
+    }
   );
 
   return (
@@ -37,7 +36,8 @@ export function SiteHeader() {
         <div
           className="absolute inset-0 -z-10"
           style={{
-            backgroundImage: "linear-gradient(to bottom, hsl(var(--background)) 50%, transparent)",
+            background: `linear-gradient(to top, hsla(var(--background-hsl), 0) 0%, hsla(var(--background-hsl), 0.55) 60%, hsla(var(--background-hsl), 0.92) 100%)`,
+            backdropFilter: 'blur(10px)',
           }}
         />
       )}
