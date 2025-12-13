@@ -87,7 +87,14 @@ export default function Home() {
         </div>
         <div className="flex justify-center relative">
           <FadeIn duration={1700} delay={500}>
-            <div className="h-20 w-px bg-gradient-to-b from-transparent via-foreground/[.33] to-transparent relative -top-28" />
+            <div
+              className="h-20 w-px relative -top-28"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 5%, hsl(var(--foreground)) 95%, transparent)",
+                opacity: 0.33,
+              }}
+            />
           </FadeIn>
         </div>
       </section>
