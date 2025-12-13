@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useVisibility } from "@/hooks/use-visibility";
 import { ChevronLeft } from "lucide-react";
+import React from "react";
 
 const navLinks = [
   { href: "/firm-profile", label: "FIRM PROFILE" },
@@ -54,20 +55,24 @@ export function SiteHeader() {
           </div>
 
           <nav className="flex-1 flex justify-center md:justify-end">
-            <div className="flex items-center space-x-4 md:space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "text-xs tracking-widest md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95] whitespace-nowrap",
-                    pathname === link.href
-                      ? "text-accent font-medium"
-                      : "text-foreground/60"
+            <div className="flex items-center space-x-4 md:space-x-6">
+              {navLinks.map((link, index) => (
+                <React.Fragment key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "text-[13.5px] tracking-widest md:tracking-[0.2em] uppercase hover:text-accent transition-colors scale-[.95] whitespace-nowrap",
+                      pathname === link.href
+                        ? "text-accent font-medium"
+                        : "text-foreground/60"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                  {index < navLinks.length - 1 && (
+                    <span className="text-foreground/20 scale-[.95]">|</span>
                   )}
-                >
-                  {link.label}
-                </Link>
+                </React.Fragment>
               ))}
             </div>
           </nav>
