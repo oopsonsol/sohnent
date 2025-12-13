@@ -25,7 +25,7 @@ export default function ContactPage() {
               </p>
 
               <form action="https://api.web3forms.com/submit" method="POST" className="mt-12 max-w-lg mx-auto text-left space-y-6">
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+                <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                  <div className="grid w-full items-center gap-1.5">
                     <Label htmlFor="name" className="text-xs text-foreground/50 tracking-widest uppercase">Name</Label>
                     <Input type="text" id="name" name="name" required />
