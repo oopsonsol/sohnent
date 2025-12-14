@@ -23,9 +23,9 @@ export function SiteFooter() {
               alt="Sohn Enterprises Logo"
               width={18}
               height={18}
-              className="inline-block mr-3"
+              className="inline-block mr-2"
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col -space-y-0.5">
               <span>© {year} Sohn Enterprises</span>
               <span className="scale-[.85] origin-center md:origin-left">LIMITED LIABILITY COMPANY</span>
             </div>
