@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
 import { SiteHeader } from '@/components/site-header';
@@ -31,7 +31,7 @@ export default function HomePage() {
   const enterButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const { setHasEntered } = useVisibility();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setHasEntered(!entry.isIntersecting);
@@ -110,7 +110,7 @@ export default function HomePage() {
       </section>
 
       <div ref={contentRef} className="scroll-mt-16">
-        <section className="pt-0 pb-24 md:py-36 md:pt-36">
+        <section className="py-12 md:py-36 pt-0 md:pt-36">
           <div className="container mx-auto px-4">
             <div className="flex flex-col space-y-16 md:space-y-24 max-w-4xl mx-auto">
               {sections.map((section, index) => (
@@ -119,7 +119,7 @@ export default function HomePage() {
                     <h2 className="text-sm md:text-[17px] font-bold tracking-[0.3em] uppercase text-accent mb-6">
                       {section.title}
                     </h2>
-                    <p className="text-lg text-foreground font-light leading-relaxed">
+                    <p className="text-lg text-foreground font-light leading-relaxed max-w-prose">
                       {section.description}
                     </p>
                   </div>

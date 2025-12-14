@@ -30,10 +30,10 @@ export default function FirmProfilePageContent() {
                 />
               </div>
               <div className="relative z-20">
-                <h1 className="text-3xl font-light leading-9 tracking-wide">
+                <h1 className="text-3xl font-light leading-relaxed tracking-wide max-w-prose">
                   Sohn Enterprises is a privately held U.S. investment syndicate with strategic operations in LATAM.
                 </h1>
-                <ul className="mt-20 flex flex-col space-y-8">
+                <ul className="mt-20 flex flex-col space-y-10">
                   {points.map((point, index) => (
                       <li key={index} className="flex items-center w-full max-w-md">
                           <div className="w-px h-6 bg-accent mr-6"></div>
