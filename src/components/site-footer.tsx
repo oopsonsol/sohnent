@@ -18,7 +18,7 @@ export function SiteFooter() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
           <div className="flex items-center text-xs text-foreground/50 tracking-widest uppercase">
-            <Image 
+            <Image
               src="/sohn-enterprises-se-logo.png"
               alt="Sohn Enterprises Logo"
               width={18}

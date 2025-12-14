@@ -64,14 +64,14 @@ export default function HomePage() {
     <>
       <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4 relative">
-        <Image 
+        <Image
           src="/sohn-enterprises-se-logo.png"
           alt="Sohn Enterprises Key Logo"
           width={100}
           height={100}
-          className="absolute top-12 left-1/2 -translate-x-1/2 opacity-[0.12] z-0"
+          className="absolute top-12 left-1/2 -translate-x-1/2 opacity-[0.12] z-10"
         />
-        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52 z-10">
+        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52 z-20">
             <FadeIn className="flex flex-col items-center" duration={1600}>
               <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
                 Sohn<br className="md:hidden" /> Enterprises

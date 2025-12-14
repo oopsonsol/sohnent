@@ -23,9 +23,9 @@ export default function FirmProfilePageContent() {
                 src="/sohn-enterprises-se-logo.png"
                 alt="Sohn Enterprises Logo Watermark"
                 fill
-                className="object-contain opacity-[0.08] z-0"
+                className="object-contain opacity-[0.08] z-10"
               />
-              <div className="relative z-10">
+              <div className="relative z-20">
                 <h1 className="text-3xl font-light leading-9 tracking-wide">
                   Sohn Enterprises is a privately held U.S. investment syndicate with strategic operations in LATAM.
                 </h1>
