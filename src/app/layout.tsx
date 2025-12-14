@@ -69,8 +69,8 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    icon: '/sohn-enterprises-se-logo.png',
+    shortcut: '/sohn-enterprises-se-logo.png',
   },
 };
 

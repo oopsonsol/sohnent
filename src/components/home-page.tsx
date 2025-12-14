@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/fade-in';
 import { SiteHeader } from '@/components/site-header';
 import { useVisibility } from '@/hooks/use-visibility';
+import Image from 'next/image';
 
 const sections = [
   {
@@ -62,8 +63,15 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <section className="min-h-screen flex flex-col items-center text-center p-4">
-        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52">
+      <section className="min-h-screen flex flex-col items-center text-center p-4 relative">
+        <Image 
+          src="/sohn-enterprises-se-logo.png"
+          alt="Sohn Enterprises Key Logo"
+          width={100}
+          height={100}
+          className="absolute top-12 left-1/2 -translate-x-1/2 opacity-[0.12] z-0"
+        />
+        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52 z-10">
             <FadeIn className="flex flex-col items-center" duration={1600}>
               <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
                 Sohn<br className="md:hidden" /> Enterprises
@@ -85,7 +93,7 @@ export default function HomePage() {
               </Button>
             </FadeIn>
         </div>
-        <div className="flex justify-center relative">
+        <div className="flex justify-center relative z-10">
           <FadeIn duration={1700} delay={500}>
             <div
               className="h-[54px] w-px relative -top-28"
