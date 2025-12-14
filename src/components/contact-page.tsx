@@ -7,9 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useEffect, useRef, useState } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Script from "next/script";
+
+const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
 
 export default function ContactPageContent() {
   const { toast } = useToast();
@@ -17,51 +19,52 @@ export default function ContactPageContent() {
   const pathname = usePathname();
 
   const [isSuccess, setIsSuccess] = useState(false);
-  const [token, setToken] = useState("");
-  const [captchaKey, setCaptchaKey] = useState(0);
-  const hcaptchaRef = useRef<HCaptcha>(null);
 
-  const sitekey = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
-
+  // Read success=1 from URL whenever we are on /contact
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (pathname !== "/contact") return;
 
     const params = new URLSearchParams(window.location.search);
-    const successParam = params.get("success") === "1";
-    
-    if (isSuccess !== successParam) {
-      setIsSuccess(successParam);
+    const success = params.get("success") === "1";
+    if (success && !isSuccess) {
+      setIsSuccess(true);
     }
-
-    // Always reset token + hard remount captcha when landing on /contact via client navigation
-    setToken("");
-    setCaptchaKey((k) => k + 1);
-    setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
   }, [pathname, isSuccess]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (!token || !token.trim()) {
-      event.preventDefault();
+    // Web3Forms script will handle captcha validation.
+    // We can do a soft guard here to prevent submitting empty forms.
+    const form = event.currentTarget;
+    const name = (form.elements.namedItem("name") as HTMLInputElement | null)?.value?.trim();
+    const email = (form.elements.namedItem("email") as HTMLInputElement | null)?.value?.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement | null)?.value?.trim();
+
+    if (!name || !email || !message) {
+      event.preventDefault(); // Stop the form submission
       toast({
-        title: "Captcha Required",
-        description: "Please complete the captcha before submitting.",
+        title: "Missing Fields",
+        description: "Please fill out all fields before submitting.",
         variant: "destructive",
       });
     }
+    // If fields are filled, the form will submit normally.
   };
 
   const handleSendAnother = () => {
-    router.replace("/contact");
+    // Use router to clear the success param and reset state
+    router.replace("/contact", { scroll: false });
     setIsSuccess(false);
-    setToken("");
-    setCaptchaKey((k) => k + 1);
-    setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
+    // The form itself doesn't need manual resetting if it's part of the re-render
   };
 
   return (
     <>
       <SiteHeader />
+      <Script
+        src="https://web3forms.com/client/script.js"
+        strategy="afterInteractive"
+      />
       <FadeIn duration={1600}>
         <section className="pt-28 md:pt-36 pb-24 md:pb-32">
           <div className="container mx-auto px-4">
@@ -101,7 +104,6 @@ export default function ContactPageContent() {
                 >
                   <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                   <input type="hidden" name="redirect" value="https://sohnenterprises.com/contact?success=1" />
-                  <textarea name="h-captcha-response" value={token} readOnly className="hidden" />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-6">
                     <div className="grid w-full items-center gap-1.5">
@@ -126,15 +128,10 @@ export default function ContactPageContent() {
                   </div>
 
                   <div className="flex justify-center pt-4">
-                    <HCaptcha
-                      key={captchaKey}
-                      ref={hcaptchaRef}
-                      sitekey={sitekey}
-                      onVerify={(t) => setToken(t ?? "")}
-                      onExpire={() => setToken("")}
-                      onError={() => setToken("")}
-                      reCaptchaCompat={false}
-                    />
+                    <div
+                      className="h-captcha"
+                      data-sitekey={HCAPTCHA_SITEKEY}
+                    ></div>
                   </div>
 
                   <div className="text-center pt-4">
