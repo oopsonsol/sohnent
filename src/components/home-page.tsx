@@ -64,7 +64,7 @@ export default function HomePage() {
     <>
       <SiteHeader />
       <section className="min-h-screen flex flex-col items-center text-center p-4 relative">
-        <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52 z-20">
+        <div className="flex-grow flex flex-col items-center justify-end pb-28 md:pb-52 z-20">
             <FadeIn className="flex flex-col items-center" duration={1600}>
               <div className="relative mb-8 z-20">
                 <Image
@@ -98,7 +98,7 @@ export default function HomePage() {
         <div className="flex justify-center relative z-10">
           <FadeIn duration={1700} delay={500}>
             <div
-              className="h-[54px] w-px relative -top-28"
+              className="h-[54px] w-px relative -top-20 md:-top-28"
               style={{
                 background:
                   "linear-gradient(to bottom, transparent, hsl(var(--foreground)) 30%, hsl(var(--foreground)) 70%, transparent)",
@@ -110,7 +110,7 @@ export default function HomePage() {
       </section>
 
       <div ref={contentRef} className="scroll-mt-16">
-        <section className="py-12 md:py-36 pt-0 md:pt-36">
+        <section className="py-16 md:py-36">
           <div className="container mx-auto px-4">
             <div className="flex flex-col space-y-16 md:space-y-24 max-w-4xl mx-auto">
               {sections.map((section, index) => (
