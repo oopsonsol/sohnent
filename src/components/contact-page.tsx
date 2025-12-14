@@ -7,8 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function ContactPageContent() {
@@ -17,10 +17,15 @@ export default function ContactPageContent() {
   const pathname = usePathname();
 
   const [isSuccess, setIsSuccess] = useState(false);
-  const [scriptKey, setScriptKey] = useState(0);
+  const [token, setToken] = useState("");
+  const [captchaKey, setCaptchaKey] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const hcaptchaRef = useRef<HCaptcha>(null);
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Web3Forms docs (React/Next.js + free plan):
+  const sitekey = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -30,42 +35,47 @@ export default function ContactPageContent() {
     const successParam = params.get("success") === "1";
     setIsSuccess(successParam);
 
-    // Force Web3Forms client script to re-run when returning to /contact via internal navigation
-    // (so it re-initializes the hCaptcha div each time)
-    setScriptKey((k) => k + 1);
+    // If we're on the success state, do NOT reset captcha/token.
+    if (successParam) return;
+
+    // Ensure captcha is visible + fresh whenever we enter /contact via internal nav
+    setToken("");
+    setCaptchaKey((k) => k + 1);
+    setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
   }, [pathname]);
 
   const handleSendAnother = () => {
     router.replace("/contact");
     setIsSuccess(false);
-    setScriptKey((k) => k + 1);
+    setToken("");
+    setCaptchaKey((k) => k + 1);
+    setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmitting) return;
 
-    const form = formRef.current;
-    if (!form) return;
-
-    // Web3Forms docs: validate by checking textarea[name="h-captcha-response"]
-    const captchaValue =
-      (form.querySelector('textarea[name="h-captcha-response"]') as HTMLTextAreaElement | null)
-        ?.value?.trim() ?? "";
-
-    if (!captchaValue) {
+    const trimmed = (token || "").trim();
+    if (!trimmed) {
       toast({
         title: "Captcha Required",
-        description: "Please fill out captcha field.",
+        description: "Please complete the captcha before submitting.",
         variant: "destructive",
       });
       return;
     }
 
+    const form = formRef.current;
+    if (!form) return;
+
     setIsSubmitting(true);
 
     try {
       const fd = new FormData(form);
+
+      // Web3Forms expects this field name EXACTLY:
+      fd.set("h-captcha-response", trimmed);
 
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -84,12 +94,14 @@ export default function ContactPageContent() {
           variant: "destructive",
         });
 
-        // Re-init captcha so user can retry cleanly
-        setScriptKey((k) => k + 1);
+        // reset captcha so the user can retry cleanly
+        setToken("");
+        setCaptchaKey((k) => k + 1);
+        setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
         return;
       }
 
-      // Success: show OUR success UI (no Web3Forms pages)
+      // Show OUR success UI (no Web3Forms success/fail page)
       router.replace("/contact?success=1");
       setIsSuccess(true);
     } catch {
@@ -98,7 +110,10 @@ export default function ContactPageContent() {
         description: "Could not submit the form. Please try again.",
         variant: "destructive",
       });
-      setScriptKey((k) => k + 1);
+
+      setToken("");
+      setCaptchaKey((k) => k + 1);
+      setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
     } finally {
       setIsSubmitting(false);
     }
@@ -106,16 +121,6 @@ export default function ContactPageContent() {
 
   return (
     <>
-      {/* Web3Forms docs Step 2: Add the Web3Forms script */}
-      {/* Key changes forces reload on internal nav so captcha initializes every time */}
-      <Script
-        key={scriptKey}
-        src="https://web3forms.com/client/script.js"
-        strategy="afterInteractive"
-        async
-        defer
-      />
-
       <SiteHeader />
       <FadeIn duration={1600}>
         <section className="pt-28 md:pt-36 pb-24 md:pb-32">
@@ -150,8 +155,6 @@ export default function ContactPageContent() {
               ) : (
                 <form
                   ref={formRef}
-                  action="https://api.web3forms.com/submit"
-                  method="POST"
                   onSubmit={handleSubmit}
                   className="mt-12 max-w-lg mx-auto text-left space-y-6"
                   id="contact-form"
@@ -160,11 +163,6 @@ export default function ContactPageContent() {
                     type="hidden"
                     name="access_key"
                     value="4983e55d-b31e-4582-b796-08e7ef7a4701"
-                  />
-                  <input
-                    type="hidden"
-                    name="redirect"
-                    value="https://sohnenterprises.com/contact?success=1"
                   />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-6">
@@ -198,9 +196,16 @@ export default function ContactPageContent() {
                     <Textarea id="message" name="message" required rows={4} maxLength={360} />
                   </div>
 
-                  {/* Web3Forms docs Step 1: Add a <div> inside your form */}
                   <div className="flex justify-center pt-4">
-                    <div className="h-captcha" data-captcha="true" />
+                    <HCaptcha
+                      key={captchaKey}
+                      ref={hcaptchaRef}
+                      sitekey={sitekey}
+                      reCaptchaCompat={false}
+                      onVerify={(t) => setToken(t ?? "")}
+                      onExpire={() => setToken("")}
+                      onError={() => setToken("")}
+                    />
                   </div>
 
                   <div className="text-center pt-4">
