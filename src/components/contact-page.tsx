@@ -7,32 +7,41 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useState, useEffect, useRef } from 'react';
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
 export default function ContactPageContent() {
   const { toast } = useToast();
   const [isSuccess, setIsSuccess] = useState(false);
-  const [token, setToken] = useState("");
-  const hcaptchaRef = useRef<HCaptcha>(null);
   const router = useRouter();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
     setIsSuccess(params.get("success") === "1");
+
+    // Re-inject Web3Forms script on mount to handle client-side navigation
+    const existingScript = document.getElementById("web3forms-client-script");
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const script = document.createElement("script");
+    script.id = "web3forms-client-script";
+    script.src = "https://web3forms.com/client/script.js?v=" + Date.now();
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
   }, []);
 
-  useEffect(() => {
-    if (!isSuccess) {
-      setToken("");
-      setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
-    }
-  }, [isSuccess]);
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (!token) {
+    // Check if captcha is filled by querying the textarea Web3Forms creates
+    const captchaResponse = (event.currentTarget.querySelector(
+      'textarea[name="h-captcha-response"]'
+    ) as HTMLTextAreaElement)?.value;
+
+    if (!captchaResponse) {
       event.preventDefault();
       toast({
         title: "Captcha Required",
@@ -45,8 +54,6 @@ export default function ContactPageContent() {
   const handleSendAnother = () => {
     router.replace("/contact");
     setIsSuccess(false);
-    setToken("");
-    setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
   };
 
   return (
@@ -91,7 +98,6 @@ export default function ContactPageContent() {
                 >
                   <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                   <input type="hidden" name="redirect" value="https://sohnenterprises.com/contact?success=1" />
-                  <input type="hidden" name="h-captcha-response" value={token} />
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-6">
                     <div className="grid w-full items-center gap-1.5">
@@ -108,14 +114,7 @@ export default function ContactPageContent() {
                       <Textarea id="message" name="message" required rows={4} maxLength={360} />
                   </div>
                   <div className="flex justify-center pt-4">
-                    <HCaptcha
-                        ref={hcaptchaRef}
-                        sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                        onVerify={(t) => setToken(t ?? "")}
-                        onExpire={() => setToken("")}
-                        onError={() => setToken("")}
-                        reCaptchaCompat={false}
-                    />
+                    <div className="h-captcha" data-captcha="true"></div>
                   </div>
                   <div className="text-center pt-4">
                       <Button
