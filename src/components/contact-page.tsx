@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -21,13 +21,7 @@ export default function ContactPageContent() {
   const [captchaKey, setCaptchaKey] = useState(0);
   const hcaptchaRef = useRef<HCaptcha>(null);
 
-  // Use real sitekey ONLY on production domain. Use hCaptcha test key elsewhere to avoid domain restriction failures.
-  const sitekey = useMemo(() => {
-    if (typeof window === "undefined") return "10000000-ffff-ffff-ffff-000000000001";
-    return window.location.hostname === "sohnenterprises.com"
-      ? "50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-      : "10000000-ffff-ffff-ffff-000000000001";
-  }, []);
+  const sitekey = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -44,7 +38,7 @@ export default function ContactPageContent() {
     setToken("");
     setCaptchaKey((k) => k + 1);
     setTimeout(() => hcaptchaRef.current?.resetCaptcha(), 0);
-  }, [pathname]);
+  }, [pathname, isSuccess]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     if (!token) {
@@ -107,7 +101,7 @@ export default function ContactPageContent() {
                 >
                   <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                   <input type="hidden" name="redirect" value="https://sohnenterprises.com/contact?success=1" />
-                  <input type="hidden" name="h-captcha-response" value={token} />
+                  <textarea name="h-captcha-response" value={token} readOnly className="hidden" />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-6">
                     <div className="grid w-full items-center gap-1.5">
