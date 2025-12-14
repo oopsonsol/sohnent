@@ -14,10 +14,15 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
   const { toast } = useToast();
   const router = useRouter();
   const [isSuccess, setIsSuccess] = useState(initialSuccess);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsSuccess(initialSuccess);
   }, [initialSuccess]);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -35,6 +40,7 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
 
   const handleSendAnother = () => {
     router.replace('/contact');
+    setIsSuccess(false);
   };
 
   return (
@@ -94,7 +100,7 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
                       <Textarea id="message" name="message" required rows={4} maxLength={360} />
                   </div>
                   <div className="flex justify-center pt-4">
-                      <div className="h-captcha" data-captcha="true"></div>
+                    {isClient && <div className="h-captcha" data-captcha="true"></div>}
                   </div>
                   <div className="text-center pt-4">
                       <Button
