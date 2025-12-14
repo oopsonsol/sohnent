@@ -7,17 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-export default function ContactPageContent({ initialSuccess = false }: { initialSuccess?: boolean }) {
+export default function ContactPageContent() {
   const { toast } = useToast();
-  const router = useRouter();
-  const [isSuccess, setIsSuccess] = useState(initialSuccess);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    setIsSuccess(initialSuccess);
-  }, [initialSuccess]);
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    setIsSuccess(params.get("success") === "1");
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -34,7 +34,12 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
   };
 
   const handleSendAnother = () => {
-    router.replace('/contact');
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("success");
+      window.history.replaceState({}, "", url.toString());
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
     setIsSuccess(false);
   };
 

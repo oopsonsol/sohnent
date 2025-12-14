@@ -9,16 +9,6 @@ export const metadata: Metadata = {
     },
 };
 
-type SearchParams = {
-  success?: string;
-};
-
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams?: Promise<SearchParams>;
-}) {
-  const sp = (await searchParams) ?? {};
-  const initialSuccess = sp.success === "1";
-  return <ContactPageContent initialSuccess={initialSuccess} />;
+export default function ContactPage() {
+  return <ContactPageContent />;
 }
