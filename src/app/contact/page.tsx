@@ -16,8 +16,9 @@ type SearchParams = {
 export default async function ContactPage({
   searchParams,
 }: {
-  searchParams?: SearchParams;
+  searchParams?: Promise<SearchParams>;
 }) {
-  const initialSuccess = searchParams?.success === "1";
+  const sp = (await searchParams) ?? {};
+  const initialSuccess = sp.success === "1";
   return <ContactPageContent initialSuccess={initialSuccess} />;
 }
