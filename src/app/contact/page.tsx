@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     },
 };
 
-export default function ContactPage() {
-  return <ContactPageContent />;
+export default function ContactPage({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }) {
+  const success = searchParams?.success === '1';
+  return <ContactPageContent initialSuccess={success} />;
 }

@@ -7,19 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-export default function ContactPageContent() {
+export default function ContactPageContent({ initialSuccess = false }: { initialSuccess?: boolean }) {
   const { toast } = useToast();
-  const searchParams = useSearchParams();
-  const [isSuccess, setIsSuccess] = useState(false);
+  const router = useRouter();
+  const [isSuccess, setIsSuccess] = useState(initialSuccess);
 
   useEffect(() => {
-    if (searchParams.get('success') === '1') {
-      setIsSuccess(true);
-    }
-  }, [searchParams]);
+    setIsSuccess(initialSuccess);
+  }, [initialSuccess]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -36,8 +34,7 @@ export default function ContactPageContent() {
   };
 
   const handleSendAnother = () => {
-    setIsSuccess(false);
-    window.history.replaceState({}, '', '/contact');
+    router.replace('/contact');
   };
 
   return (
