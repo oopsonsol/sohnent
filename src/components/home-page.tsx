@@ -69,7 +69,7 @@ export default function HomePage() {
           alt="Sohn Enterprises Key Logo"
           width={100}
           height={100}
-          className="absolute top-12 left-1/2 -translate-x-1/2 opacity-[0.12] z-0"
+          className="absolute top-12 left-1/2 -translate-x-1/2 opacity-[0.12] -z-10"
         />
         <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52 z-10">
             <FadeIn className="flex flex-col items-center" duration={1600}>

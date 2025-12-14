@@ -50,14 +50,14 @@ export function SiteHeader() {
           
           <div className="flex items-center">
             {isInteriorPage && (
-              <Link href="/" className="inline-flex md:hidden text-foreground/60 hover:text-accent transition-colors">
+              <Link href="/" className="inline-flex items-center text-foreground/60 hover:text-accent transition-colors md:hidden">
                 <ChevronLeft className="w-5 h-5" />
               </Link>
             )}
              <Link
               href="/"
               className={cn(
-                "text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors items-center",
+                "items-center text-lg font-light tracking-[0.2em] uppercase hover:text-accent transition-colors",
                 "hidden",
                 !isHome && "md:flex"
               )}

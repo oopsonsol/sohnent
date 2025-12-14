@@ -109,7 +109,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <div
-          className="fixed inset-0 -z-10 pointer-events-none"
+          className="fixed inset-0 -z-20 pointer-events-none"
           style={{
             backgroundImage: `
               radial-gradient(ellipse at top center, hsla(42,45%,55%,0.09) 0%, transparent 70%),
