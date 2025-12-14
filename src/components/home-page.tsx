@@ -110,7 +110,7 @@ export default function HomePage() {
       </section>
 
       <div ref={contentRef} className="scroll-mt-16">
-        <section className="py-16 md:py-36">
+        <section className="pt-0 pb-16 md:py-36">
           <div className="container mx-auto px-4">
             <div className="flex flex-col space-y-16 md:space-y-24 max-w-4xl mx-auto">
               {sections.map((section, index) => (
