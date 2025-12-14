@@ -46,7 +46,7 @@ export function SiteHeader() {
         </>
       )}
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center max-w-[1100px] mx-auto relative">
+        <div className="flex justify-between items-center max-w-[1100px] mx-auto relative h-10">
           
           <div className="flex items-center">
             {isInteriorPage && (
@@ -65,9 +65,10 @@ export function SiteHeader() {
               <Image 
                 src="/sohn-enterprises-se-logo.png"
                 alt="Sohn Enterprises Logo"
-                width={28}
-                height={28}
-                className="mr-2"
+                width={32}
+                height={32}
+                className="mr-3"
+                unoptimized
               />
               Sohn Enterprises
             </Link>

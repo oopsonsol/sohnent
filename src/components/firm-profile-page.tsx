@@ -19,12 +19,16 @@ export default function FirmProfilePageContent() {
         <section className="pt-28 md:pt-36 pb-24 md:pb-32">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto relative">
-              <Image
-                src="/sohn-enterprises-se-logo.png"
-                alt="Sohn Enterprises Logo Watermark"
-                fill
-                className="object-contain opacity-[0.08] z-10"
-              />
+              <div className="absolute inset-0 flex items-center justify-center -top-16 md:-top-24 z-10 pointer-events-none">
+                <Image
+                  src="/sohn-enterprises-se-logo.png"
+                  alt="Sohn Enterprises Logo Watermark"
+                  width={200}
+                  height={200}
+                  className="object-contain opacity-[0.08] w-48 h-48 md:w-64 md:h-64"
+                  unoptimized
+                />
+              </div>
               <div className="relative z-20">
                 <h1 className="text-3xl font-light leading-9 tracking-wide">
                   Sohn Enterprises is a privately held U.S. investment syndicate with strategic operations in LATAM.
