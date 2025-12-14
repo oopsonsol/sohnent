@@ -66,7 +66,7 @@ export function SiteHeader() {
                 alt="Sohn Enterprises Logo"
                 width={32}
                 height={32}
-                className="mr-3"
+                className="mr-1"
                 unoptimized
               />
               Sohn Enterprises
