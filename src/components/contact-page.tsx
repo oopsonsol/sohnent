@@ -14,15 +14,10 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
   const { toast } = useToast();
   const router = useRouter();
   const [isSuccess, setIsSuccess] = useState(initialSuccess);
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsSuccess(initialSuccess);
   }, [initialSuccess]);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -61,9 +56,9 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
 
               {isSuccess ? (
                 <div className="mt-12 max-w-lg mx-auto text-center space-y-6 bg-transparent p-8">
-                  <h2 className="text-2xl font-medium tracking-wide">Message submitted</h2>
+                  <h2 className="text-2xl font-medium tracking-wide">MESSAGE SENT</h2>
                   <p className="text-foreground/70">
-                    Thank you — your message has been successfully submitted. We’ll review it and get back to you within 1–2 business days.
+                    Thank you — your message has been successfully submitted. We'll review it and get back to you within 1–2 business days.
                   </p>
                   <div className="pt-4">
                     <Button
@@ -81,6 +76,7 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
                   method="POST"
                   onSubmit={handleSubmit} 
                   className="mt-12 max-w-lg mx-auto text-left space-y-6"
+                  id="contact-form"
                 >
                   <input type="hidden" name="access_key" value="4983e55d-b31e-4582-b796-08e7ef7a4701" />
                   <input type="hidden" name="redirect" value="https://sohnenterprises.com/contact?success=1" />
@@ -100,7 +96,7 @@ export default function ContactPageContent({ initialSuccess = false }: { initial
                       <Textarea id="message" name="message" required rows={4} maxLength={360} />
                   </div>
                   <div className="flex justify-center pt-4">
-                    {isClient && <div className="h-captcha" data-captcha="true"></div>}
+                    <div className="h-captcha" data-captcha="true"></div>
                   </div>
                   <div className="text-center pt-4">
                       <Button
