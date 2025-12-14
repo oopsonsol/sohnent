@@ -66,7 +66,7 @@ export default function HomePage() {
       <section className="min-h-screen flex flex-col items-center text-center p-4 relative">
         <div className="flex-grow flex flex-col items-center justify-end pb-40 md:pb-52 z-20">
             <FadeIn className="flex flex-col items-center" duration={1600}>
-              <div className="relative mb-8">
+              <div className="relative mb-8 z-20">
                 <Image
                   src="/sohn-enterprises-se-logo.png"
                   alt="Sohn Enterprises Key Logo"
@@ -75,20 +75,20 @@ export default function HomePage() {
                   className="opacity-[0.12] mx-auto"
                 />
               </div>
-              <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase">
+              <h1 className="text-[2.35rem] md:text-7xl font-light tracking-[0.1em] md:tracking-[0.20em] uppercase z-20">
                 Sohn<br className="md:hidden" /> Enterprises
               </h1>
-              <p className="mt-8 text-[0.9rem] md:text-[17px] tracking-[0.15em] md:tracking-[0.25em] text-foreground/70 max-w-4xl mx-auto uppercase font-normal">
+              <p className="mt-8 text-[0.9rem] md:text-[17px] tracking-[0.15em] md:tracking-[0.25em] text-foreground/70 max-w-4xl mx-auto uppercase font-normal z-20">
                 Private Capital • Strategic Deployment • Global Reach
               </p>
-              <p className="mt-4 text-sm tracking-[0.1em] md:tracking-[0.25em] text-foreground/50 uppercase font-normal">
+              <p className="mt-4 text-sm tracking-[0.1em] md:tracking-[0.25em] text-foreground/50 uppercase font-normal z-20">
                 United States • LATAM Markets
               </p>
               <Button
                 ref={enterButtonRef}
                 variant="link"
                 size="lg"
-                className="mt-16 tracking-[0.3em] font-normal text-xs md:text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8"
+                className="mt-16 tracking-[0.3em] font-normal text-xs md:text-xs hover:text-accent transition-colors duration-500 underline underline-offset-8 z-20"
                 onClick={handleScroll}
               >
                 OVERVIEW
