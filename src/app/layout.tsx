@@ -68,10 +68,6 @@ export const metadata: Metadata = {
     description: siteConfig.short_og_description,
     images: [siteConfig.ogImage],
   },
-  icons: {
-    icon: '/favicon.png?v=2',
-    shortcut: '/favicon.png?v=2',
-  },
 };
 
 export const viewport: Viewport = {
@@ -99,6 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.png?v=2" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
