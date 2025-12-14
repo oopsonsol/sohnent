@@ -41,7 +41,7 @@ export default function ContactPageContent() {
   }, [pathname, isSuccess]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (!token) {
+    if (!token || !token.trim()) {
       event.preventDefault();
       toast({
         title: "Captcha Required",
