@@ -20,7 +20,6 @@ export function SiteHeader() {
   const { hasEntered } = useVisibility();
   
   const isNavVisible = !isHome || hasEntered;
-  const isInteriorPage = ["/firm-profile", "/contact", "/investors"].includes(pathname);
 
   const headerClasses = cn(
     "py-4 md:py-6 fixed top-0 left-0 right-0 z-50 transition-all ease-out",
@@ -49,8 +48,8 @@ export function SiteHeader() {
         <div className="flex justify-between items-center max-w-[1100px] mx-auto relative h-10">
           
           <div className="flex items-center">
-            {isInteriorPage && (
-              <Link href="/" className="inline-flex items-center text-foreground/60 hover:text-accent transition-colors md:hidden">
+            {!isHome && (
+              <Link href="/" className="inline-flex items-center text-foreground/60 hover:text-accent transition-colors md:hidden -ml-2 p-2">
                 <ChevronLeft className="w-5 h-5" />
               </Link>
             )}
